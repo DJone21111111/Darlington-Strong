@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X, Heart, Search, MapPin, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "Grote Kerk", path: "/grote-kerk" },
-  { name: "Teylers Museum", path: "/teylers-museum" },
-  { name: "Schedule", path: "/schedule" },
-  { name: "Route Map", path: "/map" },
+  { name: "Stories", path: "/stories", external: true },
+  { name: "History", path: "/", active: true },
+  { name: "Restaurants", path: "/restaurants", external: true },
+  { name: "Dance", path: "/dance", external: true },
+  { name: "Jazz", path: "/jazz", external: true },
 ];
 
 export function Navigation() {
@@ -30,43 +29,47 @@ export function Navigation() {
     setIsOpen(false);
   }, [location]);
 
+  const isHistorySection = (path: string) => {
+    return path === "/" || path === "/grote-kerk" || path === "/teylers-museum" || path === "/schedule" || path === "/map";
+  };
+
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-elegant py-3"
-          : "bg-transparent py-6"
+          ? "bg-background/98 backdrop-blur-md shadow-sm border-border"
+          : "bg-background border-border/50"
       )}
     >
-      <nav className="container mx-auto px-6 flex items-center justify-between">
+      <nav className="container mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link
           to="/"
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-1 group shrink-0"
+          aria-label="Haarlem - Home"
         >
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-            <MapPin className="w-5 h-5 text-primary-foreground" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-display text-lg font-semibold text-foreground leading-tight">
-              A Stroll Through
-            </span>
-            <span className="font-display text-sm text-primary italic">
-              History
-            </span>
-          </div>
+          <span className="font-display text-2xl font-bold tracking-tight text-foreground">
+            H
+          </span>
+          <span className="text-primary text-2xl">★</span>
+          <span className="font-display text-2xl font-bold tracking-tight text-foreground">
+            ARLEM
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-2">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
               className={cn(
-                "nav-link font-body text-sm uppercase tracking-wider",
-                location.pathname === link.path && "active text-foreground"
+                "px-5 py-2 rounded-sm text-sm font-medium transition-all duration-200",
+                "border border-primary/80 hover:bg-primary hover:text-primary-foreground",
+                (link.active && isHistorySection(location.pathname)) 
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-primary/10 text-primary"
               )}
             >
               {link.name}
@@ -74,18 +77,52 @@ export function Navigation() {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <div className="hidden lg:block">
-          <Button variant="hero" size="lg" asChild>
-            <Link to="/schedule">Book a Tour</Link>
-          </Button>
+        {/* Right Side Actions */}
+        <div className="hidden lg:flex items-center gap-2">
+          <Link
+            to="/schedule"
+            className={cn(
+              "px-5 py-2 rounded-sm text-sm font-medium transition-all duration-200",
+              "bg-primary text-primary-foreground hover:bg-primary/90"
+            )}
+          >
+            Your Program
+          </Link>
+          
+          <div className="flex items-center gap-1 ml-2">
+            <button
+              className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors"
+              aria-label="Favorites"
+            >
+              <Heart className="w-5 h-5" />
+            </button>
+            <button
+              className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors"
+              aria-label="Search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+            <button
+              className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors"
+              aria-label="Location"
+            >
+              <MapPin className="w-5 h-5" />
+            </button>
+            <button
+              className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors"
+              aria-label="Language"
+            >
+              <Globe className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="lg:hidden p-2 text-foreground"
+          className="lg:hidden p-2 text-foreground hover:bg-muted rounded-md transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
+          aria-expanded={isOpen}
         >
           {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -94,38 +131,53 @@ export function Navigation() {
       {/* Mobile Menu */}
       <div
         className={cn(
-          "lg:hidden fixed inset-x-0 top-full bg-background/98 backdrop-blur-lg shadow-card transition-all duration-500 overflow-hidden",
-          isOpen ? "max-h-[calc(100vh-80px)] opacity-100" : "max-h-0 opacity-0"
+          "lg:hidden fixed inset-x-0 top-16 bg-background border-b border-border shadow-lg transition-all duration-300 overflow-hidden",
+          isOpen ? "max-h-[calc(100vh-4rem)] opacity-100" : "max-h-0 opacity-0"
         )}
+        role="menu"
+        aria-hidden={!isOpen}
       >
-        <div className="container mx-auto px-6 py-8 flex flex-col gap-6">
+        <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
           {navLinks.map((link, index) => (
             <Link
               key={link.path}
               to={link.path}
+              role="menuitem"
               className={cn(
-                "font-display text-xl py-2 border-b border-border/50 transition-all duration-300",
-                "opacity-0 translate-y-4",
-                isOpen && "animate-fade-up",
-                location.pathname === link.path && "text-primary"
+                "px-4 py-3 rounded-sm text-sm font-medium transition-all duration-200 text-center",
+                "border border-primary/80",
+                (link.active && isHistorySection(location.pathname))
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground"
               )}
               style={{ animationDelay: `${index * 50}ms` }}
             >
               {link.name}
             </Link>
           ))}
-          <Button
-            variant="hero"
-            size="lg"
-            className={cn(
-              "mt-4 opacity-0 translate-y-4",
-              isOpen && "animate-fade-up"
-            )}
-            style={{ animationDelay: `${navLinks.length * 50}ms` }}
-            asChild
+          
+          <Link
+            to="/schedule"
+            role="menuitem"
+            className="mt-2 px-4 py-3 rounded-sm text-sm font-medium bg-primary text-primary-foreground text-center"
           >
-            <Link to="/schedule">Book a Tour</Link>
-          </Button>
+            Your Program
+          </Link>
+
+          <div className="flex items-center justify-center gap-4 mt-4 pt-4 border-t border-border">
+            <button className="p-2 text-primary" aria-label="Favorites">
+              <Heart className="w-5 h-5" />
+            </button>
+            <button className="p-2 text-primary" aria-label="Search">
+              <Search className="w-5 h-5" />
+            </button>
+            <button className="p-2 text-primary" aria-label="Location">
+              <MapPin className="w-5 h-5" />
+            </button>
+            <button className="p-2 text-primary" aria-label="Language">
+              <Globe className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </div>
     </header>
