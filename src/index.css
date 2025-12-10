@@ -46,6 +46,11 @@
     --cream-dark: 38 25% 88%;
     --charcoal: 30 10% 15%;
     --charcoal-light: 30 8% 35%;
+    
+    /* Footer colors */
+    --footer-gold: 43 85% 55%;
+    --footer-olive: 43 45% 45%;
+    --footer-text: 0 0% 100%;
 
     /* Typography */
     --font-display: 'Playfair Display', Georgia, serif;

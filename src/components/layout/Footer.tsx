@@ -1,118 +1,246 @@
 import { Link } from "react-router-dom";
-import { MapPin, Mail, Phone, Clock } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
+import { useState } from "react";
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle newsletter signup
+    console.log("Newsletter signup:", email);
+    setEmail("");
+  };
+
+  const footerLinks = {
+    culture: {
+      title: "Culture",
+      links: [
+        { name: "History of Haarlem", path: "/" },
+        { name: "Museums", path: "/teylers-museum" },
+        { name: "City Walks", path: "/schedule" },
+        { name: "Leaflets and routes", path: "/map" },
+      ],
+    },
+    whatToDo: {
+      title: "What to do",
+      links: [
+        { name: "Top 10 attractions", path: "/" },
+        { name: "Events", path: "/" },
+        { name: "Food and drinks", path: "/" },
+        { name: "VVV Haarlem", path: "/" },
+        { name: "Accessibility", path: "/" },
+        { name: "Haarlem Tickets", path: "/" },
+        { name: "Christmas Market", path: "/" },
+      ],
+    },
+    shopping: {
+      title: "Shopping",
+      links: [
+        { name: "Golden Streets", path: "/" },
+        { name: "Opening hours", path: "/" },
+        { name: "Markets", path: "/" },
+        { name: "Hiking trails", path: "/" },
+        { name: "Bicycle routes", path: "/" },
+        { name: "Shopping areas", path: "/" },
+      ],
+    },
+    uitagenda: {
+      title: "Uitagenda",
+      links: [
+        { name: "Today", path: "/" },
+        { name: "Tomorrow", path: "/" },
+        { name: "This weekend", path: "/" },
+        { name: "This week", path: "/" },
+        { name: "This month", path: "/" },
+        { name: "Event registration", path: "/" },
+      ],
+    },
+  };
+
   return (
-    <footer className="bg-foreground text-primary-foreground py-16">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="font-display text-lg font-semibold">
-                  A Stroll Through History
-                </span>
+    <footer role="contentinfo" aria-label="Site footer">
+      {/* Newsletter Section */}
+      <section 
+        className="bg-[hsl(43,85%,55%)] py-16"
+        aria-labelledby="newsletter-heading"
+      >
+        <div className="container mx-auto px-6 text-center">
+          <h2 
+            id="newsletter-heading"
+            className="font-display text-3xl md:text-4xl font-bold text-white italic mb-4"
+          >
+            Do you also enjoy going out?
+          </h2>
+          <p className="text-white/90 font-body text-base md:text-lg mb-8 max-w-2xl mx-auto">
+            The monthly newsletter tells you all about the events, exhibitions and other
+            recommendations for the coming period.
+          </p>
+          
+          <form 
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"
+            aria-label="Newsletter signup form"
+          >
+            <label htmlFor="newsletter-email" className="sr-only">
+              Email address
+            </label>
+            <input
+              id="newsletter-email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email address"
+              required
+              aria-required="true"
+              className="flex-1 px-6 py-4 rounded-lg bg-white text-foreground placeholder:text-muted-foreground font-body text-base focus:outline-none focus:ring-2 focus:ring-white/50"
+            />
+            <button
+              type="submit"
+              className="px-8 py-4 bg-[hsl(43,45%,45%)] text-white font-body font-semibold uppercase tracking-wider text-sm rounded-lg hover:bg-[hsl(43,45%,40%)] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[hsl(43,85%,55%)]"
+            >
+              Sign Up
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* Footer Links Section */}
+      <section 
+        className="bg-[hsl(43,45%,45%)] py-16"
+        aria-label="Footer navigation"
+      >
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
+            {/* Culture Column */}
+            <nav aria-labelledby="footer-culture">
+              <h3 
+                id="footer-culture"
+                className="font-display text-lg font-bold text-white mb-4"
+              >
+                {footerLinks.culture.title}
+              </h3>
+              <ul className="space-y-2" role="list">
+                {footerLinks.culture.links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.path}
+                      className="text-white/80 hover:text-white transition-colors duration-300 font-body text-sm focus:outline-none focus:underline"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* What to do Column */}
+            <nav aria-labelledby="footer-whattodo">
+              <h3 
+                id="footer-whattodo"
+                className="font-display text-lg font-bold text-white mb-4"
+              >
+                {footerLinks.whatToDo.title}
+              </h3>
+              <ul className="space-y-2" role="list">
+                {footerLinks.whatToDo.links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.path}
+                      className="text-white/80 hover:text-white transition-colors duration-300 font-body text-sm focus:outline-none focus:underline"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Shopping Column */}
+            <nav aria-labelledby="footer-shopping">
+              <h3 
+                id="footer-shopping"
+                className="font-display text-lg font-bold text-white mb-4"
+              >
+                {footerLinks.shopping.title}
+              </h3>
+              <ul className="space-y-2" role="list">
+                {footerLinks.shopping.links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.path}
+                      className="text-white/80 hover:text-white transition-colors duration-300 font-body text-sm focus:outline-none focus:underline"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Uitagenda Column */}
+            <nav aria-labelledby="footer-uitagenda">
+              <h3 
+                id="footer-uitagenda"
+                className="font-display text-lg font-bold text-white mb-4"
+              >
+                {footerLinks.uitagenda.title}
+              </h3>
+              <ul className="space-y-2" role="list">
+                {footerLinks.uitagenda.links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.path}
+                      className="text-white/80 hover:text-white transition-colors duration-300 font-body text-sm focus:outline-none focus:underline"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Follow Us Column */}
+            <div aria-labelledby="footer-social">
+              <h3 
+                id="footer-social"
+                className="font-display text-lg font-bold text-white mb-4"
+              >
+                Follow Us
+              </h3>
+              <div className="flex gap-3" role="list" aria-label="Social media links">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Facebook"
+                  className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[hsl(43,45%,45%)] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[hsl(43,45%,45%)]"
+                >
+                  <Facebook className="w-5 h-5" aria-hidden="true" />
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Instagram"
+                  className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[hsl(43,45%,45%)] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[hsl(43,45%,45%)]"
+                >
+                  <Instagram className="w-5 h-5" aria-hidden="true" />
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on YouTube"
+                  className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white hover:text-[hsl(43,45%,45%)] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[hsl(43,45%,45%)]"
+                >
+                  <Youtube className="w-5 h-5" aria-hidden="true" />
+                </a>
               </div>
             </div>
-            <p className="text-primary-foreground/70 font-body text-sm leading-relaxed">
-              Discover the rich heritage of Haarlem through our expertly guided walking tours. Experience centuries of history, art, and architecture.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h4 className="font-display text-lg font-semibold">Explore</h4>
-            <ul className="space-y-2">
-              {[
-                { name: "Home", path: "/" },
-                { name: "Grote Kerk", path: "/grote-kerk" },
-                { name: "Teylers Museum", path: "/teylers-museum" },
-                { name: "Schedule", path: "/schedule" },
-                { name: "Route Map", path: "/map" },
-              ].map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-300 font-body text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div className="space-y-4">
-            <h4 className="font-display text-lg font-semibold">Contact</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-primary-foreground/70 font-body text-sm">
-                <MapPin className="w-4 h-4 flex-shrink-0" />
-                <span>Grote Markt, 2011 RD Haarlem</span>
-              </li>
-              <li className="flex items-center gap-3 text-primary-foreground/70 font-body text-sm">
-                <Mail className="w-4 h-4 flex-shrink-0" />
-                <a href="mailto:info@haarlemtours.nl" className="hover:text-primary-foreground transition-colors">
-                  info@haarlemtours.nl
-                </a>
-              </li>
-              <li className="flex items-center gap-3 text-primary-foreground/70 font-body text-sm">
-                <Phone className="w-4 h-4 flex-shrink-0" />
-                <a href="tel:+31235678900" className="hover:text-primary-foreground transition-colors">
-                  +31 23 567 8900
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Hours */}
-          <div className="space-y-4">
-            <h4 className="font-display text-lg font-semibold">Tour Hours</h4>
-            <ul className="space-y-2">
-              <li className="flex items-start gap-3 text-primary-foreground/70 font-body text-sm">
-                <Clock className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-medium text-primary-foreground">Mon - Fri</p>
-                  <p>10:00 - 12:00, 14:00 - 16:00</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3 text-primary-foreground/70 font-body text-sm">
-                <Clock className="w-4 h-4 flex-shrink-0 mt-0.5 opacity-0" />
-                <div>
-                  <p className="font-medium text-primary-foreground">Saturday</p>
-                  <p>11:00 - 13:00</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3 text-primary-foreground/70 font-body text-sm">
-                <Clock className="w-4 h-4 flex-shrink-0 mt-0.5 opacity-0" />
-                <div>
-                  <p className="font-medium text-primary-foreground">Sunday</p>
-                  <p>Closed</p>
-                </div>
-              </li>
-            </ul>
           </div>
         </div>
-
-        {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-primary-foreground/50 font-body text-sm">
-            © {new Date().getFullYear()} A Stroll Through History. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors font-body text-sm">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-primary-foreground/50 hover:text-primary-foreground transition-colors font-body text-sm">
-              Terms of Service
-            </a>
-          </div>
-        </div>
-      </div>
+      </section>
     </footer>
   );
 }
