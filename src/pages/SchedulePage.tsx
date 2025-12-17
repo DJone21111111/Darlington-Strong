@@ -160,11 +160,11 @@ export default function SchedulePage() {
             {/* Legend */}
             <div className="mt-6 flex flex-wrap gap-6 justify-center">
               <div className="flex items-center gap-2">
-                <span className="w-4 h-4 rounded bg-primary/10" />
+                <span className="w-4 h-4 rounded bg-green-500" />
                 <span className="font-body text-sm text-muted-foreground">Available</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-4 h-4 rounded bg-muted" />
+                <span className="w-4 h-4 rounded bg-gray-400" />
                 <span className="font-body text-sm text-muted-foreground">Closed</span>
               </div>
             </div>
