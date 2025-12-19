@@ -1,13 +1,11 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin, Clock, Users, Calendar, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowRight, MapPin, Clock, Users, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-haarlem.jpg";
 import groteKerkExterior from "@/assets/grote-kerk-exterior.jpg";
 import teylersExterior from "@/assets/teylers-exterior.jpg";
 
 export default function HomePage() {
-  const [showAllVenues, setShowAllVenues] = useState(false);
   return (
     <main>
       {/* Hero Section - WCAG AA compliant with dark overlay for text readability */}
@@ -120,11 +118,11 @@ export default function HomePage() {
             </p>
           </header>
 
-          {/* Venues List */}
+          {/* Venues List - Scrollable */}
           <div className="max-w-5xl mx-auto">
-            <ol className="space-y-6" role="list" aria-label="Tour venues in order">
-              {/* Always show first 3 venues */}
-              {/* Venue 1: Church of St. Bavo */}
+            <div className="max-h-[600px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
+              <ol className="space-y-6" role="list" aria-label="Tour venues in order">
+                {/* Venue 1: Church of St. Bavo */}
               <li className="bg-card rounded-xl p-6 shadow-card border-l-4 border-primary">
                 <div className="flex items-start gap-4">
                   <span className="flex-shrink-0 w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-display font-bold text-lg" aria-hidden="true">
@@ -163,28 +161,24 @@ export default function HomePage() {
                 </div>
               </li>
 
-              {/* Venue 3: De Hallen */}
-              <li className="bg-card rounded-xl p-6 shadow-card border-l-4 border-primary">
-                <div className="flex items-start gap-4">
-                  <span className="flex-shrink-0 w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-display font-bold text-lg" aria-hidden="true">
-                    3
-                  </span>
-                  <div className="flex-1">
-                    <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
-                      De Hallen (Frans Hals Museum)
-                    </h3>
-                    <p className="font-body text-foreground/80 leading-relaxed">
-                      A cultural complex housed in historic 17th-century buildings that once served as almshouses. The Vleeshal (Meat Hall) and Verweyhal now host contemporary art exhibitions, while the main Frans Hals Museum displays masterpieces from the Dutch Golden Age. The museum collection includes works by Frans Hals himself, known for his lively and expressive portraits that revolutionized Dutch painting.
-                    </p>
+                {/* Venue 3: De Hallen */}
+                <li className="bg-card rounded-xl p-6 shadow-card border-l-4 border-primary">
+                  <div className="flex items-start gap-4">
+                    <span className="flex-shrink-0 w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-display font-bold text-lg" aria-hidden="true">
+                      3
+                    </span>
+                    <div className="flex-1">
+                      <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
+                        De Hallen (Frans Hals Museum)
+                      </h3>
+                      <p className="font-body text-foreground/80 leading-relaxed">
+                        A cultural complex housed in historic 17th-century buildings that once served as almshouses. The Vleeshal (Meat Hall) and Verweyhal now host contemporary art exhibitions, while the main Frans Hals Museum displays masterpieces from the Dutch Golden Age. The museum collection includes works by Frans Hals himself, known for his lively and expressive portraits that revolutionized Dutch painting.
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </li>
+                </li>
 
-              {/* Remaining venues - hidden by default */}
-              {showAllVenues && (
-                <>
-
-              {/* Venue 4: Proveniershof */}
+                {/* Venue 4: Proveniershof */}
               <li className="bg-card rounded-xl p-6 shadow-card border-l-4 border-accent">
                 <div className="flex items-start gap-4">
                   <span className="flex-shrink-0 w-10 h-10 bg-accent text-accent-foreground rounded-full flex items-center justify-center font-display font-bold text-lg" aria-hidden="true">
@@ -290,30 +284,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </li>
-                </>
-              )}
-            </ol>
-
-            {/* View More / View Less Button */}
-            <div className="text-center mt-8">
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => setShowAllVenues(!showAllVenues)}
-                className="gap-2"
-              >
-                {showAllVenues ? (
-                  <>
-                    View Less
-                    <ChevronUp className="w-4 h-4" aria-hidden="true" />
-                  </>
-                ) : (
-                  <>
-                    View More ({6} more venues)
-                    <ChevronDown className="w-4 h-4" aria-hidden="true" />
-                  </>
-                )}
-              </Button>
+              </ol>
             </div>
           </div>
 
