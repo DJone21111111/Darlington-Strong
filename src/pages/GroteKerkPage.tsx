@@ -21,12 +21,12 @@ export default function GroteKerkPage() {
           <div className="container mx-auto">
             <Link
               to="/"
-              className="inline-flex items-center text-sm font-body text-foreground/70 hover:text-foreground transition-colors mb-6"
+              className="inline-flex items-center text-base font-body text-foreground/70 hover:text-foreground transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
             </Link>
-            <p className="font-body text-sm uppercase tracking-[0.2em] text-primary mb-3 animate-fade-up">
+            <p className="font-body text-base uppercase tracking-[0.2em] text-primary mb-3 animate-fade-up">
               Featured Location
             </p>
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-4 animate-fade-up animation-delay-100">
@@ -54,10 +54,10 @@ export default function GroteKerkPage() {
                   <item.icon className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="font-body text-xs uppercase tracking-wider text-muted-foreground">
+                  <p className="font-body text-base uppercase tracking-wider text-muted-foreground">
                     {item.label}
                   </p>
-                  <p className="font-display text-sm font-semibold">{item.value}</p>
+                  <p className="font-display text-base font-semibold">{item.value}</p>
                 </div>
               </div>
             ))}
@@ -95,7 +95,7 @@ export default function GroteKerkPage() {
                       className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
                     />
                     <div className="p-4 bg-card">
-                      <p className="font-body text-sm text-muted-foreground">
+                      <p className="font-body text-base text-muted-foreground">
                         The famous Müller organ, played by Mozart in 1766
                       </p>
                     </div>
@@ -107,7 +107,7 @@ export default function GroteKerkPage() {
                       className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
                     />
                     <div className="p-4 bg-card">
-                      <p className="font-body text-sm text-muted-foreground">
+                      <p className="font-body text-base text-muted-foreground">
                         Historic view of the church, 19th century
                       </p>
                     </div>
@@ -120,9 +120,9 @@ export default function GroteKerkPage() {
                     className="w-full h-80 object-cover hover:scale-105 transition-transform duration-500"
                   />
                   <div className="p-4 bg-card">
-                    <p className="font-body text-sm text-muted-foreground">
-                      The imposing exterior dominates Haarlem's main square
-                    </p>
+                      <p className="font-body text-base text-muted-foreground">
+                        The imposing exterior dominates Haarlem's main square
+                      </p>
                   </div>
                 </div>
               </div>
@@ -169,7 +169,7 @@ export default function GroteKerkPage() {
                 </h3>
                 <dl className="space-y-4">
                   <div>
-                    <dt className="font-body text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                    <dt className="font-body text-base uppercase tracking-wider text-muted-foreground mb-1">
                       Full Address
                     </dt>
                     <dd className="font-body text-foreground">
@@ -179,31 +179,31 @@ export default function GroteKerkPage() {
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-body text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                    <dt className="font-body text-base uppercase tracking-wider text-muted-foreground mb-1">
                       Construction Period
                     </dt>
                     <dd className="font-body text-foreground">1370 – 1520 (150 years)</dd>
                   </div>
                   <div>
-                    <dt className="font-body text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                    <dt className="font-body text-base uppercase tracking-wider text-muted-foreground mb-1">
                       Architectural Style
                     </dt>
                     <dd className="font-body text-foreground">Brabantine Gothic</dd>
                   </div>
                   <div>
-                    <dt className="font-body text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                    <dt className="font-body text-base uppercase tracking-wider text-muted-foreground mb-1">
                       Original Purpose
                     </dt>
                     <dd className="font-body text-foreground">Catholic Parish Church</dd>
                   </div>
                   <div>
-                    <dt className="font-body text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                    <dt className="font-body text-base uppercase tracking-wider text-muted-foreground mb-1">
                       Current Function
                     </dt>
                     <dd className="font-body text-foreground">Protestant Church & Cultural Venue</dd>
                   </div>
                   <div>
-                    <dt className="font-body text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                    <dt className="font-body text-base uppercase tracking-wider text-muted-foreground mb-1">
                       Opening Hours
                     </dt>
                     <dd className="font-body text-foreground">
@@ -226,10 +226,10 @@ export default function GroteKerkPage() {
                     "The church appears on Haarlem's coat of arms",
                   ].map((fact, index) => (
                     <li key={index} className="flex items-start gap-3">
-                      <span className="w-6 h-6 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-xs font-bold flex-shrink-0">
+                      <span className="w-6 h-6 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-base font-bold flex-shrink-0">
                         {index + 1}
                       </span>
-                      <span className="font-body text-sm text-foreground/80">{fact}</span>
+                      <span className="font-body text-base text-foreground/80">{fact}</span>
                     </li>
                   ))}
                 </ul>
@@ -240,7 +240,7 @@ export default function GroteKerkPage() {
                 <h3 className="font-display text-xl font-semibold mb-3">
                   Visit on Our Tour
                 </h3>
-                <p className="font-body text-sm text-primary-foreground/80 mb-6">
+                <p className="font-body text-base text-primary-foreground/80 mb-6">
                   Experience the Grote Kerk with our expert guides who bring its history to life.
                 </p>
                 <Button variant="gold" size="lg" className="w-full" asChild>

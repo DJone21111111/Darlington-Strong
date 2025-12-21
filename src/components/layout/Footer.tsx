@@ -124,7 +124,7 @@ export function Footer() {
                   <li key={link.name}>
                     <Link
                       to={link.path}
-                      className="text-cream/75 hover:text-cream transition-colors duration-300 font-body text-sm focus:outline-none focus:underline"
+                      className="text-cream/75 hover:text-cream transition-colors duration-300 font-body text-base focus:outline-none focus:underline"
                     >
                       {link.name}
                     </Link>
@@ -146,7 +146,7 @@ export function Footer() {
                   <li key={link.name}>
                     <Link
                       to={link.path}
-                      className="text-cream/75 hover:text-cream transition-colors duration-300 font-body text-sm focus:outline-none focus:underline"
+                      className="text-cream/75 hover:text-cream transition-colors duration-300 font-body text-base focus:outline-none focus:underline"
                     >
                       {link.name}
                     </Link>
@@ -168,7 +168,7 @@ export function Footer() {
                   <li key={link.name}>
                     <Link
                       to={link.path}
-                      className="text-cream/75 hover:text-cream transition-colors duration-300 font-body text-sm focus:outline-none focus:underline"
+                      className="text-cream/75 hover:text-cream transition-colors duration-300 font-body text-base focus:outline-none focus:underline"
                     >
                       {link.name}
                     </Link>
@@ -190,7 +190,7 @@ export function Footer() {
                   <li key={link.name}>
                     <Link
                       to={link.path}
-                      className="text-cream/75 hover:text-cream transition-colors duration-300 font-body text-sm focus:outline-none focus:underline"
+                      className="text-cream/75 hover:text-cream transition-colors duration-300 font-body text-base focus:outline-none focus:underline"
                     >
                       {link.name}
                     </Link>
@@ -241,19 +241,19 @@ export function Footer() {
 
           {/* Bottom copyright */}
           <div className="mt-14 pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-cream/50 font-body text-sm">
+            <p className="text-cream/50 font-body text-base">
               © {new Date().getFullYear()} Haarlem Marketing. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               <a 
                 href="#" 
-                className="text-cream/50 hover:text-cream transition-colors font-body text-sm focus:outline-none focus:underline"
+                className="text-cream/50 hover:text-cream transition-colors font-body text-base focus:outline-none focus:underline"
               >
                 Privacy Policy
               </a>
               <a 
                 href="#" 
-                className="text-cream/50 hover:text-cream transition-colors font-body text-sm focus:outline-none focus:underline"
+                className="text-cream/50 hover:text-cream transition-colors font-body text-base focus:outline-none focus:underline"
               >
                 Terms of Service
               </a>
