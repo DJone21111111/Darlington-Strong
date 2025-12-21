@@ -49,7 +49,7 @@ const routeStops = [
 
 export default function MapPage() {
   return (
-    <div className="pt-24">
+    <div className="pt-36">
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-6 text-center">

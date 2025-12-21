@@ -7,7 +7,7 @@ import teylersHistoric from "@/assets/teylers-historic.jpg";
 
 export default function TeylersMuseumPage() {
   return (
-    <article className="pt-24">
+    <article className="pt-36">
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <img
