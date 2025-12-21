@@ -94,7 +94,7 @@ export default function MapPage() {
             {/* Interactive Map Placeholder */}
             <div className="lg:col-span-2">
               <div className="bg-card rounded-2xl shadow-card overflow-hidden">
-                <div className="aspect-[4/3] relative bg-secondary">
+                <div className="aspect-[4/3] relative bg-gradient-to-br from-secondary via-card to-secondary overflow-hidden">
                   {/* Map Illustration */}
                   <svg
                     viewBox="0 0 800 600"
@@ -102,87 +102,203 @@ export default function MapPage() {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    {/* Background */}
-                    <rect width="800" height="600" fill="hsl(38 25% 88%)" />
+                    {/* Background texture */}
+                    <defs>
+                      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="hsl(38 20% 80%)" strokeWidth="0.5" opacity="0.5"/>
+                      </pattern>
+                      <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="hsl(350 45% 35%)" />
+                        <stop offset="100%" stopColor="hsl(350 45% 25%)" />
+                      </linearGradient>
+                      <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                          <feMergeNode in="coloredBlur"/>
+                          <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                      </filter>
+                    </defs>
                     
-                    {/* Water/Canal */}
+                    <rect width="800" height="600" fill="hsl(38 25% 92%)" />
+                    <rect width="800" height="600" fill="url(#grid)" />
+                    
+                    {/* Spaarne River */}
                     <path
-                      d="M0 300 Q200 280 400 320 Q600 360 800 340 L800 400 Q600 420 400 380 Q200 340 0 360 Z"
-                      fill="hsl(200 40% 75%)"
-                      opacity="0.5"
-                    />
-                    
-                    {/* Streets */}
-                    <path d="M100 200 L700 200" stroke="hsl(38 20% 85%)" strokeWidth="30" />
-                    <path d="M200 100 L200 500" stroke="hsl(38 20% 85%)" strokeWidth="30" />
-                    <path d="M400 150 L400 450" stroke="hsl(38 20% 85%)" strokeWidth="30" />
-                    <path d="M600 100 L600 500" stroke="hsl(38 20% 85%)" strokeWidth="30" />
-                    <path d="M100 400 L700 400" stroke="hsl(38 20% 85%)" strokeWidth="30" />
-                    
-                    {/* Walking Route */}
-                    <path
-                      d="M200 200 L400 200 L400 300 L600 300 L600 400 L400 400 L400 450"
-                      stroke="hsl(350 45% 30%)"
-                      strokeWidth="6"
-                      strokeDasharray="12 6"
+                      d="M720 0 Q680 150 700 300 Q720 450 680 600"
                       fill="none"
-                      className="animate-pulse"
+                      stroke="hsl(200 50% 70%)"
+                      strokeWidth="40"
+                      opacity="0.4"
+                    />
+                    <path
+                      d="M720 0 Q680 150 700 300 Q720 450 680 600"
+                      fill="none"
+                      stroke="hsl(200 60% 80%)"
+                      strokeWidth="20"
+                      opacity="0.6"
                     />
                     
-                    {/* Direction Arrows */}
-                    <polygon points="400,195 410,200 400,205" fill="hsl(350 45% 30%)" />
-                    <polygon points="405,300 400,310 395,300" fill="hsl(350 45% 30%)" />
-                    <polygon points="600,305 610,310 600,315" fill="hsl(350 45% 30%)" />
+                    {/* Walking Route - smooth curved path through all 9 stops */}
+                    <path
+                      d="M120 120 
+                         C150 120 180 180 200 200
+                         L280 200
+                         C320 200 340 240 340 280
+                         L340 320
+                         C340 360 380 380 420 380
+                         L480 380
+                         C520 380 540 340 540 300
+                         L540 260
+                         C540 220 580 200 620 200
+                         L650 200
+                         C680 200 680 260 650 300
+                         L620 340
+                         C580 380 520 420 480 460
+                         L400 520"
+                      stroke="url(#routeGradient)"
+                      strokeWidth="5"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      opacity="0.9"
+                    />
                     
-                    {/* Stop Markers */}
+                    {/* Animated route overlay */}
+                    <path
+                      d="M120 120 
+                         C150 120 180 180 200 200
+                         L280 200
+                         C320 200 340 240 340 280
+                         L340 320
+                         C340 360 380 380 420 380
+                         L480 380
+                         C520 380 540 340 540 300
+                         L540 260
+                         C540 220 580 200 620 200
+                         L650 200
+                         C680 200 680 260 650 300
+                         L620 340
+                         C580 380 520 420 480 460
+                         L400 520"
+                      stroke="hsl(42 70% 55%)"
+                      strokeWidth="3"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeDasharray="10 20"
+                      opacity="0.8"
+                    >
+                      <animate attributeName="stroke-dashoffset" from="0" to="60" dur="2s" repeatCount="indefinite" />
+                    </path>
+                    
+                    {/* Stop Markers with labels */}
                     {[
-                      { x: 200, y: 200, num: 1 },
-                      { x: 300, y: 200, num: 2 },
-                      { x: 400, y: 250, num: 3 },
-                      { x: 500, y: 300, num: 4 },
-                      { x: 600, y: 350, num: 5 },
-                      { x: 400, y: 450, num: 6 },
+                      { x: 120, y: 120, num: 1, name: "St. Bavo", isStart: true },
+                      { x: 200, y: 200, num: 2, name: "Grote Markt" },
+                      { x: 340, y: 280, num: 3, name: "De Hallen" },
+                      { x: 340, y: 340, num: 4, name: "Proveniershof" },
+                      { x: 480, y: 380, num: 5, name: "Jopenkerk", isBreak: true },
+                      { x: 540, y: 260, num: 6, name: "Waalse Kerk" },
+                      { x: 650, y: 200, num: 7, name: "De Adriaan" },
+                      { x: 600, y: 360, num: 8, name: "Amst. Poort" },
+                      { x: 400, y: 520, num: 9, name: "Hof v. Bakenes", isEnd: true },
                     ].map((stop) => (
                       <g key={stop.num}>
+                        {/* Outer glow for special stops */}
+                        {(stop.isStart || stop.isBreak || stop.isEnd) && (
+                          <circle
+                            cx={stop.x}
+                            cy={stop.y}
+                            r="28"
+                            fill={stop.isBreak ? "hsl(42 70% 50%)" : stop.isStart ? "hsl(142 50% 45%)" : "hsl(350 45% 30%)"}
+                            opacity="0.2"
+                          >
+                            <animate attributeName="r" values="28;34;28" dur="2s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" values="0.2;0.1;0.2" dur="2s" repeatCount="indefinite" />
+                          </circle>
+                        )}
+                        
+                        {/* Main marker */}
                         <circle
                           cx={stop.x}
                           cy={stop.y}
-                          r="20"
-                          fill="hsl(350 45% 30%)"
-                          stroke="hsl(38 35% 96%)"
+                          r="18"
+                          fill={stop.isBreak ? "hsl(42 70% 50%)" : stop.isStart ? "hsl(142 50% 45%)" : "hsl(350 45% 30%)"}
+                          stroke="hsl(38 35% 98%)"
                           strokeWidth="3"
+                          filter="url(#glow)"
                         />
+                        
+                        {/* Number */}
                         <text
                           x={stop.x}
                           y={stop.y + 5}
                           textAnchor="middle"
-                          fill="hsl(38 35% 96%)"
-                          fontSize="14"
+                          fill="hsl(38 35% 98%)"
+                          fontSize="13"
                           fontWeight="bold"
                           fontFamily="serif"
                         >
                           {stop.num}
                         </text>
+                        
+                        {/* Label */}
+                        <rect
+                          x={stop.x - 35}
+                          y={stop.y + 22}
+                          width="70"
+                          height="18"
+                          rx="4"
+                          fill="hsl(38 35% 98%)"
+                          opacity="0.95"
+                        />
+                        <text
+                          x={stop.x}
+                          y={stop.y + 35}
+                          textAnchor="middle"
+                          fill="hsl(30 10% 20%)"
+                          fontSize="9"
+                          fontWeight="600"
+                          fontFamily="system-ui"
+                        >
+                          {stop.name}
+                        </text>
+                        
+                        {/* Special badges */}
+                        {stop.isStart && (
+                          <g>
+                            <rect x={stop.x + 18} y={stop.y - 28} width="36" height="14" rx="7" fill="hsl(142 50% 45%)" />
+                            <text x={stop.x + 36} y={stop.y - 18} textAnchor="middle" fill="white" fontSize="8" fontWeight="bold">START</text>
+                          </g>
+                        )}
+                        {stop.isBreak && (
+                          <g>
+                            <rect x={stop.x + 18} y={stop.y - 28} width="38" height="14" rx="7" fill="hsl(42 70% 50%)" />
+                            <text x={stop.x + 37} y={stop.y - 18} textAnchor="middle" fill="hsl(30 10% 15%)" fontSize="8" fontWeight="bold">BREAK</text>
+                          </g>
+                        )}
+                        {stop.isEnd && (
+                          <g>
+                            <rect x={stop.x + 18} y={stop.y - 28} width="32" height="14" rx="7" fill="hsl(350 45% 30%)" />
+                            <text x={stop.x + 34} y={stop.y - 18} textAnchor="middle" fill="white" fontSize="8" fontWeight="bold">END</text>
+                          </g>
+                        )}
                       </g>
                     ))}
                     
-                    {/* Current Location Marker */}
-                    <g>
-                      <circle cx="200" cy="200" r="30" fill="hsl(42 70% 50%)" opacity="0.3">
-                        <animate attributeName="r" values="30;40;30" dur="2s" repeatCount="indefinite" />
-                        <animate attributeName="opacity" values="0.3;0.1;0.3" dur="2s" repeatCount="indefinite" />
-                      </circle>
-                      <circle cx="200" cy="200" r="10" fill="hsl(42 70% 50%)" />
-                    </g>
-                    
                     {/* Legend */}
-                    <rect x="580" y="480" width="200" height="100" rx="8" fill="hsl(38 35% 96%)" stroke="hsl(38 20% 85%)" />
-                    <circle cx="610" cy="510" r="8" fill="hsl(350 45% 30%)" />
-                    <text x="630" y="515" fontSize="12" fill="hsl(30 10% 15%)" fontFamily="sans-serif">Tour Stop</text>
-                    <circle cx="610" cy="540" r="8" fill="hsl(42 70% 50%)" />
-                    <text x="630" y="545" fontSize="12" fill="hsl(30 10% 15%)" fontFamily="sans-serif">You Are Here</text>
-                    <line x1="600" y1="565" x2="650" y2="565" stroke="hsl(350 45% 30%)" strokeWidth="3" strokeDasharray="6 3" />
-                    <text x="660" y="570" fontSize="12" fill="hsl(30 10% 15%)" fontFamily="sans-serif">Route</text>
+                    <g>
+                      <rect x="20" y="480" width="180" height="100" rx="12" fill="hsl(38 35% 98%)" stroke="hsl(38 20% 85%)" strokeWidth="1" />
+                      
+                      <circle cx="45" cy="510" r="8" fill="hsl(142 50% 45%)" />
+                      <text x="60" y="514" fontSize="11" fill="hsl(30 10% 20%)" fontFamily="system-ui" fontWeight="500">Start Point</text>
+                      
+                      <circle cx="45" cy="535" r="8" fill="hsl(42 70% 50%)" />
+                      <text x="60" y="539" fontSize="11" fill="hsl(30 10% 20%)" fontFamily="system-ui" fontWeight="500">Break (15 min)</text>
+                      
+                      <circle cx="45" cy="560" r="8" fill="hsl(350 45% 30%)" />
+                      <text x="60" y="564" fontSize="11" fill="hsl(30 10% 20%)" fontFamily="system-ui" fontWeight="500">Tour Stop / End</text>
+                    </g>
                   </svg>
                 </div>
                 
