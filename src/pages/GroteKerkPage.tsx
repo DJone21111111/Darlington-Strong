@@ -7,7 +7,7 @@ import groteKerkHistoric from "@/assets/grote-kerk-historic.jpg";
 
 export default function GroteKerkPage() {
   return (
-    <article className="pt-24">
+    <article className="pt-36">
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <img
