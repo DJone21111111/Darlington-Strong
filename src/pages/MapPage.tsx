@@ -330,51 +330,76 @@ export default function MapPage() {
               </div>
             </div>
 
-            {/* Route Stops List */}
-            <div className="space-y-6">
-              <h2 className="font-display text-2xl font-bold">Tour Stops</h2>
+            {/* Route Stops List - Compact scrollable */}
+            <div className="lg:max-h-[600px] lg:overflow-y-auto lg:pr-2 scrollbar-thin">
+              <h2 className="font-display text-2xl font-bold mb-4 sticky top-0 bg-background py-2 z-10">Tour Stops</h2>
               
-              <div className="space-y-4">
+              <div className="space-y-2">
                 {routeStops.map((stop, index) => (
                   <div
                     key={stop.number}
-                    className="relative pl-12"
+                    className={`relative flex items-center gap-3 p-3 rounded-xl transition-all hover:bg-card hover:shadow-elegant ${
+                      stop.isBreak ? 'bg-accent/10 border border-accent/30' : 'bg-card/50'
+                    }`}
                   >
-                    {/* Connector Line */}
-                    {index !== routeStops.length - 1 && (
-                      <div className="absolute left-[18px] top-10 bottom-0 w-0.5 bg-border" />
-                    )}
-                    
                     {/* Stop Number */}
-                    <div className="absolute left-0 top-0 w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-display font-bold text-base">
+                    <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-sm ${
+                      stop.isBreak 
+                        ? 'bg-accent text-accent-foreground' 
+                        : stop.number === 1 
+                          ? 'bg-green-600 text-white'
+                          : stop.number === 9
+                            ? 'bg-primary text-primary-foreground'
+                            : 'bg-primary text-primary-foreground'
+                    }`}>
                       {stop.number}
                     </div>
                     
                     {/* Stop Content */}
-                    <div className="bg-card rounded-lg p-4 shadow-elegant">
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <h3 className="font-display text-lg font-semibold">{stop.name}</h3>
-                          <p className="font-body text-base text-muted-foreground mt-1">
-                            {stop.description}
-                          </p>
-                          <p className="font-body text-base text-primary mt-2">
-                            <Clock className="w-3 h-3 inline mr-1" />
-                            {stop.duration}
-                          </p>
-                        </div>
-                        {stop.link && (
-                          <Link
-                            to={stop.link}
-                            className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
-                          >
-                            <ArrowRight className="w-4 h-4 text-primary" />
-                          </Link>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <h3 className="font-display text-base font-semibold truncate">{stop.name}</h3>
+                        {stop.isBreak && (
+                          <span className="flex-shrink-0 text-xs bg-accent/20 text-accent-foreground px-2 py-0.5 rounded-full font-medium">
+                            Break
+                          </span>
                         )}
                       </div>
+                      <p className="font-body text-sm text-muted-foreground truncate">
+                        {stop.description}
+                      </p>
                     </div>
+                    
+                    {/* Duration */}
+                    <div className="flex-shrink-0 text-right">
+                      <p className="font-body text-sm text-primary font-medium">
+                        {stop.duration}
+                      </p>
+                    </div>
+                    
+                    {/* Link arrow */}
+                    {stop.link && (
+                      <Link
+                        to={stop.link}
+                        className="flex-shrink-0 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+                      >
+                        <ArrowRight className="w-3.5 h-3.5 text-primary" />
+                      </Link>
+                    )}
                   </div>
                 ))}
+              </div>
+              
+              {/* Quick info below stops */}
+              <div className="mt-4 p-4 bg-secondary rounded-xl">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">Total duration</span>
+                  <span className="font-semibold">2.5 hours</span>
+                </div>
+                <div className="flex items-center justify-between text-sm mt-2">
+                  <span className="text-muted-foreground">Includes</span>
+                  <span className="font-semibold">15-min break + 1 drink</span>
+                </div>
               </div>
             </div>
           </div>
