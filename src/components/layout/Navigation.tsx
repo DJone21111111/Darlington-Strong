@@ -75,7 +75,7 @@ export function Navigation() {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "px-5 py-2 rounded-sm text-sm font-medium transition-all duration-200",
+                  "px-5 py-2 rounded-sm text-base font-medium transition-all duration-200",
                   "border border-primary/80 hover:bg-primary hover:text-primary-foreground",
                   (link.active && isHistorySection(location.pathname)) 
                     ? "bg-primary text-primary-foreground"
@@ -92,7 +92,7 @@ export function Navigation() {
             <Link
               to="/schedule"
               className={cn(
-                "px-5 py-2 rounded-sm text-sm font-medium transition-all duration-200",
+                "px-5 py-2 rounded-sm text-base font-medium transition-all duration-200",
                 "bg-primary text-primary-foreground hover:bg-primary/90"
               )}
             >
@@ -154,7 +154,7 @@ export function Navigation() {
                 to={link.path}
                 role="menuitem"
                 className={cn(
-                  "px-4 py-3 rounded-sm text-sm font-medium transition-all duration-200 text-center",
+                  "px-4 py-3 rounded-sm text-base font-medium transition-all duration-200 text-center",
                   "border border-primary/80",
                   (link.active && isHistorySection(location.pathname))
                     ? "bg-primary text-primary-foreground"
@@ -169,21 +169,21 @@ export function Navigation() {
             {/* Mobile Sub Navigation for History */}
             {showSubNav && (
               <div className="mt-4 pt-4 border-t border-border">
-                <p className="text-xs uppercase tracking-wider text-muted-foreground mb-3 text-center">Quick Access</p>
+                <p className="text-base uppercase tracking-wider text-muted-foreground mb-3 text-center">Quick Access</p>
                 <div className="grid grid-cols-2 gap-2">
                   {historySubLinks.map((link) => (
                     <Link
                       key={link.path}
                       to={link.path}
                       className={cn(
-                        "flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-sm font-medium transition-all duration-200",
+                        "flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-base font-medium transition-all duration-200",
                         location.pathname === link.path
                           ? "bg-accent text-accent-foreground"
                           : "bg-muted/50 text-foreground hover:bg-accent/50"
                       )}
                     >
                       <link.icon className="w-4 h-4" />
-                      <span className="text-xs">{link.name}</span>
+                      <span className="text-base">{link.name}</span>
                     </Link>
                   ))}
                 </div>
@@ -193,7 +193,7 @@ export function Navigation() {
             <Link
               to="/schedule"
               role="menuitem"
-              className="mt-2 px-4 py-3 rounded-sm text-sm font-medium bg-primary text-primary-foreground text-center"
+              className="mt-2 px-4 py-3 rounded-sm text-base font-medium bg-primary text-primary-foreground text-center"
             >
               Your Program
             </Link>
@@ -231,7 +231,7 @@ export function Navigation() {
                   key={link.path}
                   to={link.path}
                   className={cn(
-                    "flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap",
+                    "flex items-center gap-2 px-4 py-2 rounded-full text-base font-medium transition-all duration-200 whitespace-nowrap",
                     location.pathname === link.path
                       ? "bg-primary text-primary-foreground shadow-md"
                       : "text-foreground hover:bg-primary/10"

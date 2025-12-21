@@ -55,7 +55,7 @@ export default function SchedulePage() {
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-6 text-center">
-          <p className="font-body text-sm uppercase tracking-[0.2em] text-primary-foreground/70 mb-4 animate-fade-up">
+          <p className="font-body text-base uppercase tracking-[0.2em] text-primary-foreground/70 mb-4 animate-fade-up">
             Plan Your Visit
           </p>
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up animation-delay-100">
@@ -81,7 +81,7 @@ export default function SchedulePage() {
                 <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                   <item.icon className="w-6 h-6 text-primary" />
                 </div>
-                <p className="font-body text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                <p className="font-body text-base uppercase tracking-wider text-muted-foreground mb-1">
                   {item.label}
                 </p>
                 <p className="font-display text-xl font-semibold">{item.value}</p>
@@ -128,7 +128,7 @@ export default function SchedulePage() {
                       {day.slots.map((slot) => (
                         <span
                           key={slot.time}
-                          className={`inline-flex items-center px-4 py-2 rounded-lg font-body text-sm ${
+                          className={`inline-flex items-center px-4 py-2 rounded-lg font-body text-base ${
                             slot.available
                               ? "bg-primary/10 text-primary"
                               : "bg-muted text-muted-foreground line-through"
@@ -148,7 +148,7 @@ export default function SchedulePage() {
             <div className="mt-6 flex flex-wrap gap-6 justify-center">
               <div className="flex items-center gap-2">
                 <span className="w-4 h-4 rounded bg-primary/20" />
-                <span className="font-body text-sm text-muted-foreground">Available Slots</span>
+                <span className="font-body text-base text-muted-foreground">Available Slots</span>
               </div>
             </div>
           </div>
@@ -160,7 +160,7 @@ export default function SchedulePage() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="font-body text-sm uppercase tracking-[0.2em] text-primary mb-4">
+              <p className="font-body text-base uppercase tracking-[0.2em] text-primary mb-4">
                 What's Included
               </p>
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
@@ -203,7 +203,7 @@ export default function SchedulePage() {
                   <Button variant="hero" size="xl" className="w-full">
                     Reserve Your Spot
                   </Button>
-                  <p className="font-body text-xs text-muted-foreground text-center mt-4">
+                  <p className="font-body text-base text-muted-foreground text-center mt-4">
                     No payment required now. Pay on arrival.
                   </p>
                 </div>
@@ -216,7 +216,7 @@ export default function SchedulePage() {
       {/* Meeting Point */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-6 text-center">
-          <p className="font-body text-sm uppercase tracking-[0.2em] text-primary mb-4">
+          <p className="font-body text-base uppercase tracking-[0.2em] text-primary mb-4">
             Meeting Point
           </p>
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
@@ -230,7 +230,7 @@ export default function SchedulePage() {
             <p className="font-body text-muted-foreground mb-4">
               2011 RD Haarlem, Netherlands
             </p>
-            <p className="font-body text-sm text-primary">
+            <p className="font-body text-base text-primary">
               Please arrive 10 minutes before departure
             </p>
           </div>

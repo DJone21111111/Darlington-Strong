@@ -42,7 +42,7 @@ export default function HomePage() {
           <div className="max-w-5xl mx-auto space-y-8">
             <div className="opacity-0 animate-fade-up flex items-center justify-center gap-3">
               <Sparkles className="w-5 h-5 text-gold" />
-              <p className="font-body text-sm uppercase tracking-[0.4em] text-gold">
+              <p className="font-body text-base uppercase tracking-[0.4em] text-gold">
                 Experience the Dutch Golden Age
               </p>
               <Sparkles className="w-5 h-5 text-gold" />
@@ -78,15 +78,15 @@ export default function HomePage() {
             <div className="opacity-0 animate-fade-up animation-delay-400 pt-12 grid grid-cols-3 gap-8 max-w-xl mx-auto">
               <div className="text-center">
                 <p className="font-display text-4xl font-bold text-gold">9</p>
-                <p className="font-body text-sm text-cream/70 uppercase tracking-wider">Historic Sites</p>
+                <p className="font-body text-base text-cream/70 uppercase tracking-wider">Historic Sites</p>
               </div>
               <div className="text-center border-x border-cream/20">
                 <p className="font-display text-4xl font-bold text-gold">2.5</p>
-                <p className="font-body text-sm text-cream/70 uppercase tracking-wider">Hours Tour</p>
+                <p className="font-body text-base text-cream/70 uppercase tracking-wider">Hours Tour</p>
               </div>
               <div className="text-center">
                 <p className="font-display text-4xl font-bold text-gold">800+</p>
-                <p className="font-body text-sm text-cream/70 uppercase tracking-wider">Years History</p>
+                <p className="font-body text-base text-cream/70 uppercase tracking-wider">Years History</p>
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function HomePage() {
         <div className="container mx-auto px-6 relative">
           {/* Section Header */}
           <header className="text-center mb-20">
-            <p className="font-body text-sm uppercase tracking-[0.3em] text-primary mb-4 flex items-center justify-center gap-3">
+            <p className="font-body text-base uppercase tracking-[0.3em] text-primary mb-4 flex items-center justify-center gap-3">
               <span className="w-12 h-px bg-primary/50" />
               Our Heritage
               <span className="w-12 h-px bg-primary/50" />
@@ -155,7 +155,7 @@ export default function HomePage() {
               />
               <div className="absolute bottom-6 left-6 bg-card/90 backdrop-blur-sm rounded-lg p-4 shadow-elegant">
                 <p className="font-display font-bold text-foreground">City Center</p>
-                <p className="font-body text-sm text-muted-foreground">Grote Markt at Golden Hour</p>
+                <p className="font-body text-base text-muted-foreground">Grote Markt at Golden Hour</p>
               </div>
             </div>
           </div>
@@ -171,7 +171,7 @@ export default function HomePage() {
               />
               <div className="absolute top-6 right-6 bg-card/90 backdrop-blur-sm rounded-lg p-4 shadow-elegant">
                 <p className="font-display font-bold text-foreground">Dutch Masters</p>
-                <p className="font-body text-sm text-muted-foreground">Frans Hals & Contemporaries</p>
+                <p className="font-body text-base text-muted-foreground">Frans Hals & Contemporaries</p>
               </div>
             </div>
             <div className="order-1 lg:order-2 space-y-8">
@@ -222,7 +222,7 @@ export default function HomePage() {
       <section className="py-24 bg-charcoal" aria-labelledby="highlights-heading">
         <div className="container mx-auto px-6">
           <header className="text-center mb-16">
-            <p className="font-body text-sm uppercase tracking-[0.3em] text-gold mb-4">
+            <p className="font-body text-base uppercase tracking-[0.3em] text-gold mb-4">
               Visual Journey
             </p>
             <h2 id="highlights-heading" className="font-display text-4xl md:text-5xl font-bold text-cream mb-6">
@@ -238,10 +238,10 @@ export default function HomePage() {
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="flex items-center gap-2 mb-2">
                   <Camera className="w-4 h-4 text-gold" />
-                  <span className="font-body text-xs uppercase tracking-wider text-gold">Hidden Gems</span>
+                  <span className="font-body text-base uppercase tracking-wider text-gold">Hidden Gems</span>
                 </div>
                 <h3 className="font-display text-2xl font-bold text-cream mb-2">Secret Courtyards</h3>
-                <p className="font-body text-cream/80 text-sm">Discover 17th-century hofjes—peaceful gardens hidden behind ancient wooden gates</p>
+                <p className="font-body text-cream/80 text-base">Discover 17th-century hofjes—peaceful gardens hidden behind ancient wooden gates</p>
               </div>
             </div>
 
@@ -252,10 +252,10 @@ export default function HomePage() {
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="flex items-center gap-2 mb-2">
                   <Star className="w-4 h-4 text-gold" />
-                  <span className="font-body text-xs uppercase tracking-wider text-gold">Iconic Landmark</span>
+                  <span className="font-body text-base uppercase tracking-wider text-gold">Iconic Landmark</span>
                 </div>
                 <h3 className="font-display text-2xl font-bold text-cream mb-2">Molen de Adriaan</h3>
-                <p className="font-body text-cream/80 text-sm">Climb the iconic windmill for panoramic views over the historic Spaarne River</p>
+                <p className="font-body text-cream/80 text-base">Climb the iconic windmill for panoramic views over the historic Spaarne River</p>
               </div>
             </div>
 
@@ -266,10 +266,10 @@ export default function HomePage() {
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="flex items-center gap-2 mb-2">
                   <Sparkles className="w-4 h-4 text-gold" />
-                  <span className="font-body text-xs uppercase tracking-wider text-gold">Gothic Marvel</span>
+                  <span className="font-body text-base uppercase tracking-wider text-gold">Gothic Marvel</span>
                 </div>
                 <h3 className="font-display text-2xl font-bold text-cream mb-2">Sacred Architecture</h3>
-                <p className="font-body text-cream/80 text-sm">Stand beneath soaring Gothic arches where Mozart once played the famous Müller organ</p>
+                <p className="font-body text-cream/80 text-base">Stand beneath soaring Gothic arches where Mozart once played the famous Müller organ</p>
               </div>
             </div>
           </div>
@@ -280,7 +280,7 @@ export default function HomePage() {
       <section className="py-32 bg-secondary" aria-labelledby="featured-heading">
         <div className="container mx-auto px-6">
           <header className="text-center mb-20">
-            <p className="font-body text-sm uppercase tracking-[0.3em] text-primary mb-4 flex items-center justify-center gap-3">
+            <p className="font-body text-base uppercase tracking-[0.3em] text-primary mb-4 flex items-center justify-center gap-3">
               <span className="w-12 h-px bg-primary/50" />
               Must-See Destinations
               <span className="w-12 h-px bg-primary/50" />
@@ -321,10 +321,10 @@ export default function HomePage() {
                     />
                   </div>
                 </div>
-                <div className="absolute top-4 left-4 bg-gold text-charcoal px-3 py-1.5 rounded-full font-display font-bold text-xs">
+                <div className="absolute top-4 left-4 bg-gold text-charcoal px-3 py-1.5 rounded-full font-display font-bold text-base">
                   Est. 1520
                 </div>
-                <div className="absolute bottom-4 right-4 bg-charcoal/80 text-cream px-3 py-1.5 rounded-full font-body text-xs flex items-center gap-1">
+                <div className="absolute bottom-4 right-4 bg-charcoal/80 text-cream px-3 py-1.5 rounded-full font-body text-base flex items-center gap-1">
                   <Camera className="w-3 h-3" />
                   3 Photos
                 </div>
@@ -336,7 +336,7 @@ export default function HomePage() {
                   <Star className="w-5 h-5 text-gold fill-gold" />
                   <Star className="w-5 h-5 text-gold fill-gold" />
                   <Star className="w-5 h-5 text-gold fill-gold" />
-                  <span className="font-body text-sm text-muted-foreground ml-2">Tour Highlight</span>
+                  <span className="font-body text-base text-muted-foreground ml-2">Tour Highlight</span>
                 </div>
                 <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                   Grote Kerk (St. Bavo's Church)
@@ -345,19 +345,19 @@ export default function HomePage() {
                   The magnificent Gothic cathedral dominating Haarlem's skyline for over 500 years. Its 78-meter tower is visible across the region, and the church houses the world-famous Müller organ—once played by a young Mozart in 1766.
                 </p>
                 <ul className="grid grid-cols-2 gap-4 mb-8">
-                  <li className="flex items-center gap-2 font-body text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
                     <span className="w-2 h-2 rounded-full bg-gold" />
                     78m Tower Height
                   </li>
-                  <li className="flex items-center gap-2 font-body text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
                     <span className="w-2 h-2 rounded-full bg-gold" />
                     Famous Müller Organ
                   </li>
-                  <li className="flex items-center gap-2 font-body text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
                     <span className="w-2 h-2 rounded-full bg-gold" />
                     Gothic Architecture
                   </li>
-                  <li className="flex items-center gap-2 font-body text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
                     <span className="w-2 h-2 rounded-full bg-gold" />
                     Frans Hals Tomb
                   </li>
@@ -382,7 +382,7 @@ export default function HomePage() {
                   <Star className="w-5 h-5 text-gold fill-gold" />
                   <Star className="w-5 h-5 text-gold fill-gold" />
                   <Star className="w-5 h-5 text-gold fill-gold" />
-                  <span className="font-body text-sm text-muted-foreground ml-2">Cultural Treasure</span>
+                  <span className="font-body text-base text-muted-foreground ml-2">Cultural Treasure</span>
                 </div>
                 <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
                   Teylers Museum
@@ -391,11 +391,11 @@ export default function HomePage() {
                   The oldest museum in the Netherlands, Teylers is a monument to Enlightenment thinking. Founded by wealthy silk merchant Pieter Teyler van der Hulst, its stunning Oval Room remains virtually unchanged since the 18th century.
                 </p>
                 <ul className="grid grid-cols-2 gap-4 mb-8">
-                  <li className="flex items-center gap-2 font-body text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
                     <span className="w-2 h-2 rounded-full bg-gold" />
                     Founded 1778
                   </li>
-                  <li className="flex items-center gap-2 font-body text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
                     <span className="w-2 h-2 rounded-full bg-gold" />
                     Rembrandt Drawings
                   </li>

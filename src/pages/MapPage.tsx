@@ -53,7 +53,7 @@ export default function MapPage() {
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="container mx-auto px-6 text-center">
-          <p className="font-body text-sm uppercase tracking-[0.2em] text-primary-foreground/70 mb-4 animate-fade-up">
+          <p className="font-body text-base uppercase tracking-[0.2em] text-primary-foreground/70 mb-4 animate-fade-up">
             Explore the Route
           </p>
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up animation-delay-100">
@@ -170,20 +170,20 @@ export default function MapPage() {
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-2">
                         <Navigation className="w-5 h-5 text-primary" />
-                        <span className="font-body text-sm">
+                        <span className="font-body text-base">
                           <strong>2.5 km</strong> total distance
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Clock className="w-5 h-5 text-primary" />
-                        <span className="font-body text-sm">
+                        <span className="font-body text-base">
                           <strong>2 hours</strong> duration
                         </span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
                       <div className="w-3 h-3 rounded-full bg-accent animate-pulse" />
-                      <span className="font-body text-sm text-muted-foreground">
+                      <span className="font-body text-base text-muted-foreground">
                         Start: Grote Markt
                       </span>
                     </div>
@@ -208,7 +208,7 @@ export default function MapPage() {
                     )}
                     
                     {/* Stop Number */}
-                    <div className="absolute left-0 top-0 w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-display font-bold text-sm">
+                    <div className="absolute left-0 top-0 w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-display font-bold text-base">
                       {stop.number}
                     </div>
                     
@@ -217,10 +217,10 @@ export default function MapPage() {
                       <div className="flex items-start justify-between gap-4">
                         <div>
                           <h3 className="font-display text-lg font-semibold">{stop.name}</h3>
-                          <p className="font-body text-sm text-muted-foreground mt-1">
+                          <p className="font-body text-base text-muted-foreground mt-1">
                             {stop.description}
                           </p>
-                          <p className="font-body text-xs text-primary mt-2">
+                          <p className="font-body text-base text-primary mt-2">
                             <Clock className="w-3 h-3 inline mr-1" />
                             {stop.duration}
                           </p>
@@ -276,7 +276,7 @@ export default function MapPage() {
                   {item.step}
                 </div>
                 <h3 className="font-display text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="font-body text-sm text-muted-foreground">{item.description}</p>
+                <p className="font-body text-base text-muted-foreground">{item.description}</p>
               </div>
             ))}
           </div>
