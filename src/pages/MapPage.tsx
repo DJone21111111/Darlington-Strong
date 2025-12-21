@@ -5,44 +5,66 @@ import { Button } from "@/components/ui/button";
 const routeStops = [
   {
     number: 1,
-    name: "Grote Kerk",
+    name: "Church of St. Bavo",
     description: "Gothic masterpiece with famous Müller organ",
     duration: "20 min",
     link: "/grote-kerk",
   },
   {
     number: 2,
-    name: "Stadhuis",
-    description: "Historic City Hall dating from the 17th century",
+    name: "Grote Markt",
+    description: "Historic main square and heart of Haarlem",
     duration: "10 min",
     link: null,
   },
   {
     number: 3,
-    name: "Frans Hals Museum",
-    description: "Home to Dutch Golden Age masterpieces",
+    name: "De Hallen",
+    description: "Contemporary art museum in historic building",
     duration: "15 min",
     link: null,
   },
   {
     number: 4,
-    name: "Teylers Museum",
-    description: "The oldest museum in the Netherlands",
-    duration: "25 min",
-    link: "/teylers-museum",
-  },
-  {
-    number: 5,
-    name: "Hofje van Bakenes",
-    description: "Charming hidden courtyard from 1395",
+    name: "Proveniershof",
+    description: "Beautiful 17th-century almshouse courtyard",
     duration: "10 min",
     link: null,
   },
   {
+    number: 5,
+    name: "Jopenkerk",
+    description: "Historic church turned craft brewery — refreshment break",
+    duration: "15 min (break)",
+    link: null,
+    isBreak: true,
+  },
+  {
     number: 6,
+    name: "Waalse Kerk",
+    description: "Charming Walloon church with rich history",
+    duration: "10 min",
+    link: null,
+  },
+  {
+    number: 7,
+    name: "Molen de Adriaan",
+    description: "Iconic windmill with panoramic city views",
+    duration: "15 min",
+    link: null,
+  },
+  {
+    number: 8,
     name: "Amsterdamse Poort",
     description: "Medieval city gate and fortification",
-    duration: "15 min",
+    duration: "10 min",
+    link: null,
+  },
+  {
+    number: 9,
+    name: "Hof van Bakenes",
+    description: "One of Haarlem's oldest hofjes from 1395",
+    duration: "10 min",
     link: null,
   },
 ];
@@ -171,13 +193,13 @@ export default function MapPage() {
                       <div className="flex items-center gap-2">
                         <Navigation className="w-5 h-5 text-primary" />
                         <span className="font-body text-base">
-                          <strong>2.5 km</strong> total distance
+                          <strong>9 venues</strong> to visit
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Clock className="w-5 h-5 text-primary" />
                         <span className="font-body text-base">
-                          <strong>2 hours</strong> duration
+                          <strong>2.5 hours</strong> (incl. 15-min break)
                         </span>
                       </div>
                     </div>
