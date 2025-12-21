@@ -7,46 +7,40 @@ const scheduleData = [
     day: "Thursday",
     date: "July 24",
     slots: [
-      { time: "10:00 - 12:00", available: true },
-      { time: "14:00 - 16:00", available: true },
-      { time: "18:00 - 20:00", available: true },
+      { time: "10:00 - 12:30", available: true },
+      { time: "14:00 - 16:30", available: true },
+      { time: "18:00 - 20:30", available: true },
     ],
   },
   {
     day: "Friday",
     date: "July 25",
     slots: [
-      { time: "10:00 - 12:00", available: true },
-      { time: "14:00 - 16:00", available: true },
-      { time: "18:00 - 20:00", available: true },
+      { time: "10:00 - 12:30", available: true },
+      { time: "14:00 - 16:30", available: true },
+      { time: "18:00 - 20:30", available: true },
     ],
   },
   {
     day: "Saturday",
     date: "July 26",
     slots: [
-      { time: "10:00 - 12:00", available: true },
-      { time: "13:00 - 15:00", available: true },
-      { time: "16:00 - 18:00", available: true },
-    ],
-  },
-  {
-    day: "Sunday",
-    date: "July 27",
-    slots: [
-      { time: "10:00 - 12:00", available: true },
-      { time: "14:00 - 16:00", available: true },
+      { time: "10:00 - 12:30", available: true },
+      { time: "14:00 - 16:30", available: true },
+      { time: "18:00 - 20:30", available: true },
     ],
   },
 ];
 
 const tourFeatures = [
   "Expert local guide",
-  "6 historic locations",
-  "2-hour walking tour",
-  "Small groups (max 15)",
-  "All ages welcome",
-  "Rain or shine",
+  "9 historic venues",
+  "2.5-hour walking tour",
+  "Small groups (max 12)",
+  "Refreshment break at Jopenkerk",
+  "One drink included per person",
+  "Minimum age: 12 years",
+  "No strollers allowed",
 ];
 
 export default function SchedulePage() {
@@ -72,10 +66,10 @@ export default function SchedulePage() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { icon: Clock, label: "Duration", value: "2 Hours" },
-              { icon: Users, label: "Group Size", value: "Max 15" },
-              { icon: Euro, label: "Price", value: "€15 / person" },
-              { icon: Calendar, label: "Festival Dates", value: "July 24-27" },
+              { icon: Clock, label: "Duration", value: "2.5 Hours" },
+              { icon: Users, label: "Group Size", value: "12 + Guide" },
+              { icon: Euro, label: "Price", value: "€17.50 / person" },
+              { icon: Calendar, label: "Tour Days", value: "Thu, Fri, Sat" },
             ].map((item) => (
               <div key={item.label} className="text-center">
                 <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
@@ -185,26 +179,25 @@ export default function SchedulePage() {
             <div className="bg-card rounded-2xl p-8 shadow-card">
               <h3 className="font-display text-2xl font-bold mb-6">Book Your Tour</h3>
               
-              <div className="space-y-6">
+                <div className="space-y-6">
                 <div className="flex justify-between items-center py-4 border-b border-border">
-                  <span className="font-body text-muted-foreground">Adult (12+)</span>
-                  <span className="font-display text-xl font-bold">€15.00</span>
+                  <span className="font-body text-muted-foreground">Regular Participant</span>
+                  <span className="font-display text-xl font-bold">€17.50</span>
                 </div>
                 <div className="flex justify-between items-center py-4 border-b border-border">
-                  <span className="font-body text-muted-foreground">Child (4-11)</span>
-                  <span className="font-display text-xl font-bold">€8.00</span>
+                  <span className="font-body text-muted-foreground">Family Ticket (max 4)</span>
+                  <span className="font-display text-xl font-bold">€60.00</span>
                 </div>
-                <div className="flex justify-between items-center py-4 border-b border-border">
-                  <span className="font-body text-muted-foreground">Under 4</span>
-                  <span className="font-display text-xl font-bold text-accent">Free</span>
-                </div>
+                <p className="font-body text-base text-primary">
+                  * Includes one drink per person at Jopenkerk
+                </p>
 
                 <div className="pt-4">
                   <Button variant="hero" size="xl" className="w-full">
                     Reserve Your Spot
                   </Button>
                   <p className="font-body text-base text-muted-foreground text-center mt-4">
-                    No payment required now. Pay on arrival.
+                    Minimum age: 12 years. No strollers allowed.
                   </p>
                 </div>
               </div>
@@ -223,7 +216,7 @@ export default function SchedulePage() {
             Where to Find Us
           </h2>
           <p className="font-body text-muted-foreground mb-8 max-w-2xl mx-auto">
-            All tours begin at the Grote Markt, Haarlem's main square, in front of the Grote Kerk. Look for our guide holding a burgundy umbrella.
+            All tours begin near the Church of St. Bavo at the Grote Markt in the center of Haarlem. A giant flag marks the exact starting location.
           </p>
           <div className="bg-card rounded-xl p-8 shadow-card max-w-md mx-auto">
             <p className="font-display text-lg font-semibold mb-2">Grote Markt</p>
