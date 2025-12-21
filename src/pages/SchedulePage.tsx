@@ -4,50 +4,39 @@ import { Button } from "@/components/ui/button";
 
 const scheduleData = [
   {
-    day: "Monday",
-    slots: [
-      { time: "10:00 - 12:00", available: true },
-      { time: "14:00 - 16:00", available: true },
-    ],
-  },
-  {
-    day: "Tuesday",
-    slots: [
-      { time: "10:00 - 12:00", available: true },
-      { time: "14:00 - 16:00", available: true },
-    ],
-  },
-  {
-    day: "Wednesday",
-    slots: [
-      { time: "10:00 - 12:00", available: true },
-      { time: "14:00 - 16:00", available: true },
-    ],
-  },
-  {
     day: "Thursday",
+    date: "July 24",
     slots: [
       { time: "10:00 - 12:00", available: true },
       { time: "14:00 - 16:00", available: true },
+      { time: "18:00 - 20:00", available: true },
     ],
   },
   {
     day: "Friday",
+    date: "July 25",
     slots: [
       { time: "10:00 - 12:00", available: true },
       { time: "14:00 - 16:00", available: true },
+      { time: "18:00 - 20:00", available: true },
     ],
   },
   {
     day: "Saturday",
+    date: "July 26",
     slots: [
-      { time: "11:00 - 13:00", available: true },
+      { time: "10:00 - 12:00", available: true },
+      { time: "13:00 - 15:00", available: true },
+      { time: "16:00 - 18:00", available: true },
     ],
   },
   {
     day: "Sunday",
-    slots: [],
-    closed: true,
+    date: "July 27",
+    slots: [
+      { time: "10:00 - 12:00", available: true },
+      { time: "14:00 - 16:00", available: true },
+    ],
   },
 ];
 
@@ -86,7 +75,7 @@ export default function SchedulePage() {
               { icon: Clock, label: "Duration", value: "2 Hours" },
               { icon: Users, label: "Group Size", value: "Max 15" },
               { icon: Euro, label: "Price", value: "€15 / person" },
-              { icon: Calendar, label: "Availability", value: "6 Days/Week" },
+              { icon: Calendar, label: "Festival Dates", value: "July 24-27" },
             ].map((item) => (
               <div key={item.label} className="text-center">
                 <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
@@ -108,18 +97,19 @@ export default function SchedulePage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
-                Weekly Schedule
+                Festival Schedule
               </h2>
               <p className="font-body text-muted-foreground">
-                All tours depart from the Grote Markt (main square)
+                The Festival runs Thursday through Sunday in July. All tours depart from the Grote Markt.
               </p>
             </div>
 
             {/* Schedule Grid */}
             <div className="bg-card rounded-2xl shadow-card overflow-hidden">
               {/* Header */}
-              <div className="bg-primary text-primary-foreground p-4 grid grid-cols-3 gap-4">
+              <div className="bg-primary text-primary-foreground p-4 grid grid-cols-4 gap-4">
                 <div className="font-display font-semibold">Day</div>
+                <div className="font-display font-semibold">Date</div>
                 <div className="font-display font-semibold col-span-2">Available Time Slots</div>
               </div>
 
@@ -127,31 +117,28 @@ export default function SchedulePage() {
               {scheduleData.map((day, index) => (
                 <div
                   key={day.day}
-                  className={`p-4 grid grid-cols-3 gap-4 items-center ${
+                  className={`p-4 grid grid-cols-4 gap-4 items-center ${
                     index !== scheduleData.length - 1 ? "border-b border-border" : ""
-                  } ${day.closed ? "bg-muted/50" : ""}`}
+                  }`}
                 >
                   <div className="font-display font-semibold">{day.day}</div>
+                  <div className="font-body text-muted-foreground">{day.date}</div>
                   <div className="col-span-2">
-                    {day.closed ? (
-                      <span className="font-body text-muted-foreground italic">Closed</span>
-                    ) : (
-                      <div className="flex flex-wrap gap-3">
-                        {day.slots.map((slot) => (
-                          <span
-                            key={slot.time}
-                            className={`inline-flex items-center px-4 py-2 rounded-lg font-body text-sm ${
-                              slot.available
-                                ? "bg-primary/10 text-primary"
-                                : "bg-muted text-muted-foreground line-through"
-                            }`}
-                          >
-                            <Clock className="w-4 h-4 mr-2" />
-                            {slot.time}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                    <div className="flex flex-wrap gap-3">
+                      {day.slots.map((slot) => (
+                        <span
+                          key={slot.time}
+                          className={`inline-flex items-center px-4 py-2 rounded-lg font-body text-sm ${
+                            slot.available
+                              ? "bg-primary/10 text-primary"
+                              : "bg-muted text-muted-foreground line-through"
+                          }`}
+                        >
+                          <Clock className="w-4 h-4 mr-2" />
+                          {slot.time}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -160,12 +147,8 @@ export default function SchedulePage() {
             {/* Legend */}
             <div className="mt-6 flex flex-wrap gap-6 justify-center">
               <div className="flex items-center gap-2">
-                <span className="w-4 h-4 rounded bg-green-500" />
-                <span className="font-body text-sm text-muted-foreground">Available</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 rounded bg-gray-400" />
-                <span className="font-body text-sm text-muted-foreground">Closed</span>
+                <span className="w-4 h-4 rounded bg-primary/20" />
+                <span className="font-body text-sm text-muted-foreground">Available Slots</span>
               </div>
             </div>
           </div>
