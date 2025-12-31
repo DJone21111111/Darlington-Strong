@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, MapPin, Clock, Calendar, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import LocationMap from "@/components/LocationMap";
 import teylersExterior from "@/assets/teylers-exterior.jpg";
 import teylersInterior from "@/assets/teylers-interior.jpg";
 import teylersHistoric from "@/assets/teylers-historic.jpg";
@@ -162,6 +163,14 @@ export default function TeylersMuseumPage() {
 
             {/* Sidebar */}
             <aside className="space-y-8">
+              {/* Location Map */}
+              <LocationMap
+                name="Teylers Museum"
+                address="Spaarne 16, 2011 CH Haarlem"
+                lat={52.3807}
+                lng={4.6401}
+              />
+
               {/* Detailed Information Card */}
               <div className="bg-card rounded-xl p-6 shadow-card">
                 <h3 className="font-display text-xl font-semibold mb-6 pb-4 border-b border-border">

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft, MapPin, Clock, Calendar, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import LocationMap from "@/components/LocationMap";
 import groteKerkExterior from "@/assets/grote-kerk-exterior.jpg";
 import groteKerkInterior from "@/assets/grote-kerk-interior.jpg";
 import groteKerkHistoric from "@/assets/grote-kerk-historic.jpg";
@@ -162,6 +163,14 @@ export default function GroteKerkPage() {
 
             {/* Sidebar */}
             <aside className="space-y-8">
+              {/* Location Map */}
+              <LocationMap
+                name="Grote Kerk"
+                address="Grote Markt 22, 2011 RD Haarlem"
+                lat={52.3814}
+                lng={4.6360}
+              />
+
               {/* Detailed Information Card */}
               <div className="bg-card rounded-xl p-6 shadow-card">
                 <h3 className="font-display text-xl font-semibold mb-6 pb-4 border-b border-border">
