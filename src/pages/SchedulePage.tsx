@@ -1,27 +1,39 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
   Clock, 
   Calendar, 
   Users, 
+  Euro, 
   Check, 
   MapPin, 
+  Globe2, 
   ChevronRight,
   Ticket,
-  Info
+  Info,
+  Languages
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
+type Language = "all" | "english" | "dutch" | "chinese";
+
 interface TourSlot {
   time: string;
-  groups: number;
+  english: number;
+  dutch: number;
+  chinese: number;
 }
 
 interface DaySchedule {
   day: string;
   dateLabel: string;
   slots: TourSlot[];
-  guides: string[];
+  guides: {
+    dutch: string[];
+    english: string[];
+    chinese: string[];
+  };
 }
 
 const scheduleData: DaySchedule[] = [
@@ -29,41 +41,57 @@ const scheduleData: DaySchedule[] = [
     day: "Thursday",
     dateLabel: "Last weekend of July",
     slots: [
-      { time: "10:00", groups: 1 },
-      { time: "13:00", groups: 1 },
-      { time: "16:00", groups: 1 },
+      { time: "10:00", english: 1, dutch: 1, chinese: 0 },
+      { time: "13:00", english: 1, dutch: 1, chinese: 0 },
+      { time: "16:00", english: 1, dutch: 1, chinese: 0 },
     ],
-    guides: ["Frederic"],
+    guides: {
+      dutch: ["Jan-Willem"],
+      english: ["Frederic"],
+      chinese: [],
+    },
   },
   {
     day: "Friday",
     dateLabel: "Last weekend of July",
     slots: [
-      { time: "10:00", groups: 1 },
-      { time: "13:00", groups: 1 },
-      { time: "16:00", groups: 1 },
+      { time: "10:00", english: 1, dutch: 1, chinese: 0 },
+      { time: "13:00", english: 1, dutch: 1, chinese: 1 },
+      { time: "16:00", english: 1, dutch: 1, chinese: 0 },
     ],
-    guides: ["Williams"],
+    guides: {
+      dutch: ["Annet"],
+      english: ["Williams"],
+      chinese: ["Kim"],
+    },
   },
   {
     day: "Saturday",
     dateLabel: "Last weekend of July",
     slots: [
-      { time: "10:00", groups: 2 },
-      { time: "13:00", groups: 2 },
-      { time: "16:00", groups: 1 },
+      { time: "10:00", english: 2, dutch: 2, chinese: 0 },
+      { time: "13:00", english: 2, dutch: 2, chinese: 1 },
+      { time: "16:00", english: 1, dutch: 1, chinese: 1 },
     ],
-    guides: ["Frederic", "William"],
+    guides: {
+      dutch: ["Annet", "Jan-Willem"],
+      english: ["Frederic", "William"],
+      chinese: ["Kim"],
+    },
   },
   {
     day: "Sunday",
     dateLabel: "Last weekend of July",
     slots: [
-      { time: "10:00", groups: 2 },
-      { time: "13:00", groups: 3 },
-      { time: "16:00", groups: 1 },
+      { time: "10:00", english: 2, dutch: 2, chinese: 1 },
+      { time: "13:00", english: 3, dutch: 3, chinese: 2 },
+      { time: "16:00", english: 1, dutch: 1, chinese: 0 },
     ],
-    guides: ["Deirdre", "Frederic", "William"],
+    guides: {
+      dutch: ["Lisa", "Annet", "Jan-Willem"],
+      english: ["Deirdre", "Frederic", "William"],
+      chinese: ["Kim", "Susan"],
+    },
   },
 ];
 
@@ -78,7 +106,27 @@ const tourFeatures = [
   "No strollers allowed",
 ];
 
+const languageConfig = {
+  english: { label: "English", flag: "🇬🇧", color: "bg-blue-500/10 text-blue-600 border-blue-200" },
+  dutch: { label: "Nederlands", flag: "🇳🇱", color: "bg-orange-500/10 text-orange-600 border-orange-200" },
+  chinese: { label: "中文", flag: "🇨🇳", color: "bg-red-500/10 text-red-600 border-red-200" },
+};
+
 export default function SchedulePage() {
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>("all");
+
+  const getToursForSlot = (slot: TourSlot, language: Language) => {
+    if (language === "all") {
+      return slot.english + slot.dutch + slot.chinese;
+    }
+    return slot[language];
+  };
+
+  const hasToursInLanguage = (slot: TourSlot, language: Language) => {
+    if (language === "all") return true;
+    return slot[language] > 0;
+  };
+
   return (
     <div className="pt-36">
       {/* Hero Section */}
@@ -95,8 +143,43 @@ export default function SchedulePage() {
             Tour Schedule
           </h1>
           <p className="font-body text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto animate-fade-up animation-delay-200">
-            Choose your preferred time slot. All tours start at Bavo Church on the Grote Markt.
+            Choose your preferred language and time slot. All tours start at Bavo Church on the Grote Markt.
           </p>
+        </div>
+      </section>
+
+      {/* Language Selector */}
+      <section className="py-8 bg-card border-b border-border sticky top-24 z-30 backdrop-blur-lg bg-card/95">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex items-center gap-2 text-muted-foreground">
+              <Languages className="w-5 h-5" />
+              <span className="font-body text-sm uppercase tracking-wider">Filter by language:</span>
+            </div>
+            <div className="flex flex-wrap justify-center gap-2">
+              <Button
+                variant={selectedLanguage === "all" ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSelectedLanguage("all")}
+                className="rounded-full"
+              >
+                <Globe2 className="w-4 h-4 mr-2" />
+                All Languages
+              </Button>
+              {(Object.keys(languageConfig) as (keyof typeof languageConfig)[]).map((lang) => (
+                <Button
+                  key={lang}
+                  variant={selectedLanguage === lang ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setSelectedLanguage(lang)}
+                  className="rounded-full"
+                >
+                  <span className="mr-2">{languageConfig[lang].flag}</span>
+                  {languageConfig[lang].label}
+                </Button>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -107,7 +190,7 @@ export default function SchedulePage() {
             {[
               { icon: Clock, label: "Duration", value: "2.5 Hours", detail: "Per tour" },
               { icon: Users, label: "Group Size", value: "Max 12", detail: "Per guide" },
-              { icon: Ticket, label: "From", value: "€17.50", detail: "Per person" },
+              { icon: Euro, label: "From", value: "€17.50", detail: "Per person" },
               { icon: MapPin, label: "Start Point", value: "Bavo Church", detail: "Grote Markt" },
             ].map((item) => (
               <div 
@@ -136,7 +219,7 @@ export default function SchedulePage() {
               Festival Schedule
             </h2>
             <p className="font-body text-muted-foreground max-w-2xl mx-auto">
-              Four days of walking tours through Haarlem's historic center. Each tour accommodates up to 12 participants.
+              Four days of walking tours through Haarlem's historic center. Each tour accommodates up to 12 participants with multilingual guides.
             </p>
           </div>
 
@@ -159,9 +242,21 @@ export default function SchedulePage() {
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      <Badge variant="secondary" className="bg-white/20 text-white border-0">
-                        Guides: {day.guides.join(", ")}
-                      </Badge>
+                      {day.guides.english.length > 0 && (
+                        <Badge variant="secondary" className="bg-white/20 text-white border-0">
+                          🇬🇧 {day.guides.english.join(", ")}
+                        </Badge>
+                      )}
+                      {day.guides.dutch.length > 0 && (
+                        <Badge variant="secondary" className="bg-white/20 text-white border-0">
+                          🇳🇱 {day.guides.dutch.join(", ")}
+                        </Badge>
+                      )}
+                      {day.guides.chinese.length > 0 && (
+                        <Badge variant="secondary" className="bg-white/20 text-white border-0">
+                          🇨🇳 {day.guides.chinese.join(", ")}
+                        </Badge>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -169,42 +264,69 @@ export default function SchedulePage() {
                 {/* Time Slots */}
                 <div className="p-6">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {day.slots.map((slot) => (
-                      <div
-                        key={slot.time}
-                        className="relative rounded-xl border-2 p-5 transition-all border-primary/20 bg-primary/5 hover:border-primary/40 hover:shadow-md cursor-pointer"
-                      >
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center gap-2">
-                            <Clock className="w-5 h-5 text-primary" />
-                            <span className="font-display text-2xl font-bold">{slot.time}</span>
+                    {day.slots.map((slot) => {
+                      const showSlot = hasToursInLanguage(slot, selectedLanguage);
+                      if (!showSlot && selectedLanguage !== "all") return null;
+                      
+                      return (
+                        <div
+                          key={slot.time}
+                          className={`relative rounded-xl border-2 p-5 transition-all ${
+                            showSlot 
+                              ? "border-primary/20 bg-primary/5 hover:border-primary/40 hover:shadow-md cursor-pointer" 
+                              : "border-border bg-muted/30 opacity-50"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center gap-2">
+                              <Clock className="w-5 h-5 text-primary" />
+                              <span className="font-display text-2xl font-bold">{slot.time}</span>
+                            </div>
+                            <Badge variant="outline" className="font-body">
+                              {getToursForSlot(slot, selectedLanguage)} tours
+                            </Badge>
                           </div>
-                          <Badge variant="outline" className="font-body">
-                            {slot.groups} {slot.groups === 1 ? "tour" : "tours"}
-                          </Badge>
-                        </div>
-                        
-                        {/* Tour availability */}
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-blue-500/10 text-blue-600 border border-blue-200">
-                            <span className="font-body text-sm flex items-center gap-2">
-                              <span>🇬🇧</span> English
-                            </span>
-                            <span className="font-display font-semibold">{slot.groups} group{slot.groups > 1 ? "s" : ""}</span>
+                          
+                          {/* Language availability */}
+                          <div className="space-y-2">
+                            {slot.english > 0 && (selectedLanguage === "all" || selectedLanguage === "english") && (
+                              <div className={`flex items-center justify-between px-3 py-2 rounded-lg ${languageConfig.english.color} border`}>
+                                <span className="font-body text-sm flex items-center gap-2">
+                                  <span>🇬🇧</span> English
+                                </span>
+                                <span className="font-display font-semibold">{slot.english} group{slot.english > 1 ? "s" : ""}</span>
+                              </div>
+                            )}
+                            {slot.dutch > 0 && (selectedLanguage === "all" || selectedLanguage === "dutch") && (
+                              <div className={`flex items-center justify-between px-3 py-2 rounded-lg ${languageConfig.dutch.color} border`}>
+                                <span className="font-body text-sm flex items-center gap-2">
+                                  <span>🇳🇱</span> Nederlands
+                                </span>
+                                <span className="font-display font-semibold">{slot.dutch} group{slot.dutch > 1 ? "s" : ""}</span>
+                              </div>
+                            )}
+                            {slot.chinese > 0 && (selectedLanguage === "all" || selectedLanguage === "chinese") && (
+                              <div className={`flex items-center justify-between px-3 py-2 rounded-lg ${languageConfig.chinese.color} border`}>
+                                <span className="font-body text-sm flex items-center gap-2">
+                                  <span>🇨🇳</span> 中文
+                                </span>
+                                <span className="font-display font-semibold">{slot.chinese} group{slot.chinese > 1 ? "s" : ""}</span>
+                              </div>
+                            )}
+                          </div>
+                          
+                          <div className="mt-4 pt-4 border-t border-border/50">
+                            <div className="flex items-center justify-between text-sm text-muted-foreground">
+                              <span className="flex items-center gap-1">
+                                <Users className="w-4 h-4" />
+                                12 seats per tour
+                              </span>
+                              <ChevronRight className="w-4 h-4" />
+                            </div>
                           </div>
                         </div>
-                        
-                        <div className="mt-4 pt-4 border-t border-border/50">
-                          <div className="flex items-center justify-between text-sm text-muted-foreground">
-                            <span className="flex items-center gap-1">
-                              <Users className="w-4 h-4" />
-                              12 seats per tour
-                            </span>
-                            <ChevronRight className="w-4 h-4" />
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
