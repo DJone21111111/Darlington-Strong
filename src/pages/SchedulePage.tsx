@@ -11,7 +11,8 @@ import {
   ChevronRight,
   Ticket,
   Info,
-  Languages
+  Languages,
+  AlertTriangle
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -496,6 +497,27 @@ export default function SchedulePage() {
                   Please arrive 10 minutes before departure
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Remarks Section */}
+      <section className="py-16 md:py-24 bg-amber-50 dark:bg-amber-950/20">
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-amber-100 dark:bg-amber-900/30 rounded-2xl p-8 border-l-4 border-amber-500">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center">
+                  <AlertTriangle className="w-6 h-6 text-amber-600 dark:text-amber-400" />
+                </div>
+                <h3 className="font-display text-2xl font-bold text-amber-900 dark:text-amber-100">
+                  Remarks
+                </h3>
+              </div>
+              <p className="font-body text-lg text-amber-800 dark:text-amber-200 leading-relaxed">
+                Due to the nature of this walk, participants must be a minimum of <span className="font-semibold">12 years old</span> and <span className="font-semibold">no strollers</span> are allowed. Groups will consist of <span className="font-semibold">12 participants + 1 guide</span>.
+              </p>
             </div>
           </div>
         </div>
