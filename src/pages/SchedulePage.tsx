@@ -113,7 +113,7 @@ const languageConfig = {
 };
 
 export default function SchedulePage() {
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>("all");
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>("english");
 
   const getToursForSlot = (slot: TourSlot, language: Language) => {
     if (language === "all") {
