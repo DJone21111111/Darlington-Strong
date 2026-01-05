@@ -193,13 +193,13 @@ export default function SchedulePage() {
           <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto px-6 text-center relative z-10">
-          <p className="font-body text-sm uppercase tracking-[0.2em] text-primary-foreground/70 mb-3">
+          <p className="font-body text-xl uppercase tracking-[0.2em] text-primary-foreground/70 mb-3">
             Last Weekend of July
           </p>
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             A Stroll Through History
           </h1>
-          <p className="font-body text-lg text-primary-foreground/80 max-w-xl mx-auto">
+          <p className="font-body text-xl text-primary-foreground/80 max-w-xl mx-auto">
             2.5-hour guided walking tour through Haarlem's historic center
           </p>
         </div>
@@ -212,7 +212,7 @@ export default function SchedulePage() {
       >
         <ShoppingBag className="w-6 h-6" />
         {personalProgram.length > 0 && (
-          <span className="absolute -top-2 -right-2 w-6 h-6 bg-accent text-accent-foreground rounded-full text-sm font-bold flex items-center justify-center">
+          <span className="absolute -top-2 -right-2 w-6 h-6 bg-accent text-accent-foreground rounded-full text-xl font-bold flex items-center justify-center">
             {personalProgram.length}
           </span>
         )}
@@ -230,7 +230,7 @@ export default function SchedulePage() {
                 </div>
                 <div>
                   <h2 className="font-display text-xl font-bold">My Personal Program</h2>
-                  <p className="font-body text-sm text-muted-foreground">
+                  <p className="font-body text-xl text-muted-foreground">
                     {personalProgram.length} reservation{personalProgram.length !== 1 ? "s" : ""}
                   </p>
                 </div>
@@ -249,8 +249,8 @@ export default function SchedulePage() {
                   <div className="w-16 h-16 rounded-full bg-muted mx-auto mb-4 flex items-center justify-center">
                     <ShoppingBag className="w-8 h-8 text-muted-foreground" />
                   </div>
-                  <p className="font-display text-lg font-semibold mb-2">Your program is empty</p>
-                  <p className="font-body text-sm text-muted-foreground">
+                  <p className="font-display text-xl font-semibold mb-2">Your program is empty</p>
+                  <p className="font-body text-xl text-muted-foreground">
                     Book a tour to add it here
                   </p>
                 </div>
@@ -263,9 +263,9 @@ export default function SchedulePage() {
                     >
                       <div className="flex items-start justify-between mb-3">
                         <div>
-                          <p className="font-display font-bold text-lg">{reservation.day}</p>
-                          <p className="font-body text-sm text-muted-foreground flex items-center gap-2">
-                            <Clock className="w-4 h-4" />
+                          <p className="font-display font-bold text-xl">{reservation.day}</p>
+                          <p className="font-body text-xl text-muted-foreground flex items-center gap-2">
+                            <Clock className="w-5 h-5" />
                             {reservation.time}
                           </p>
                         </div>
@@ -273,26 +273,26 @@ export default function SchedulePage() {
                           onClick={() => removeFromProgram(reservation.id)}
                           className="p-2 hover:bg-destructive/10 rounded-lg text-destructive transition-colors"
                         >
-                          <Trash2 className="w-4 h-4" />
+                          <Trash2 className="w-5 h-5" />
                         </button>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Badge variant="outline" className="text-xs">
+                          <Badge variant="outline" className="text-xl py-1 px-3">
                             {languageConfig[reservation.language as keyof typeof languageConfig].flag}{" "}
                             {languageConfig[reservation.language as keyof typeof languageConfig].label}
                           </Badge>
-                          <Badge variant="secondary" className="text-xs">
-                            <Users className="w-3 h-3 mr-1" />
+                          <Badge variant="secondary" className="text-xl py-1 px-3">
+                            <Users className="w-4 h-4 mr-1" />
                             {reservation.people}
                           </Badge>
                         </div>
-                        <span className="font-display font-bold text-primary">
+                        <span className="font-display font-bold text-primary text-xl">
                           €{reservation.price.toFixed(2)}
                         </span>
                       </div>
                       {reservation.ticketType === "family" && (
-                        <Badge className="mt-2 bg-accent/10 text-accent-foreground border-accent/20">
+                        <Badge className="mt-2 bg-accent/10 text-accent-foreground border-accent/20 text-xl py-1 px-3">
                           Family Ticket
                         </Badge>
                       )}
@@ -301,7 +301,7 @@ export default function SchedulePage() {
                   
                   <div className="border-t border-border pt-4 mt-6">
                     <div className="flex items-center justify-between mb-4">
-                      <span className="font-body text-muted-foreground">Total</span>
+                      <span className="font-body text-muted-foreground text-xl">Total</span>
                       <span className="font-display text-2xl font-bold">€{getTotalPrice().toFixed(2)}</span>
                     </div>
                     <Button variant="hero" size="lg" className="w-full">
@@ -318,21 +318,21 @@ export default function SchedulePage() {
       {/* Quick Info Bar */}
       <section className="py-6 bg-card border-b border-border">
         <div className="container mx-auto px-6">
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 text-xl">
             <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-primary" />
+              <Clock className="w-5 h-5 text-primary" />
               <span className="font-body">2.5 hours</span>
             </div>
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-primary" />
+              <MapPin className="w-5 h-5 text-primary" />
               <span className="font-body">9 locations</span>
             </div>
             <div className="flex items-center gap-2">
-              <Users className="w-4 h-4 text-primary" />
+              <Users className="w-5 h-5 text-primary" />
               <span className="font-body">Max 12 per group</span>
             </div>
             <div className="flex items-center gap-2">
-              <Euro className="w-4 h-4 text-primary" />
+              <Euro className="w-5 h-5 text-primary" />
               <span className="font-body">From €17.50</span>
             </div>
           </div>
@@ -349,7 +349,7 @@ export default function SchedulePage() {
               <div className="bg-card rounded-2xl shadow-card border border-border overflow-hidden">
                 <div className="bg-primary text-primary-foreground p-6">
                   <h2 className="font-display text-2xl font-bold">Book Your Tour</h2>
-                  <p className="font-body text-primary-foreground/80 text-sm mt-1">
+                  <p className="font-body text-primary-foreground/80 text-xl mt-1">
                     Select date, time, language, and ticket type
                   </p>
                 </div>
@@ -357,14 +357,14 @@ export default function SchedulePage() {
                 <div className="p-6 space-y-6">
                   {/* Day Selection - Tabs */}
                   <div>
-                    <label className="font-display text-sm font-semibold mb-3 block flex items-center gap-2">
-                      <Calendar className="w-4 h-4 text-primary" />
+                    <label className="font-display text-xl font-semibold mb-3 block flex items-center gap-2">
+                      <Calendar className="w-5 h-5 text-primary" />
                       Select Day
                     </label>
                     <Tabs value={bookingDay} onValueChange={setBookingDay} className="w-full">
                       <TabsList className="w-full grid grid-cols-4">
                         {scheduleData.map((day) => (
-                          <TabsTrigger key={day.day} value={day.day} className="text-xs sm:text-sm">
+                          <TabsTrigger key={day.day} value={day.day} className="text-xl">
                             {day.day.slice(0, 3)}
                           </TabsTrigger>
                         ))}
@@ -374,8 +374,8 @@ export default function SchedulePage() {
 
                   {/* Time Selection */}
                   <div>
-                    <label className="font-display text-sm font-semibold mb-3 block flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-primary" />
+                    <label className="font-display text-xl font-semibold mb-3 block flex items-center gap-2">
+                      <Clock className="w-5 h-5 text-primary" />
                       Select Time
                     </label>
                     <div className="grid grid-cols-3 gap-2">
@@ -386,7 +386,7 @@ export default function SchedulePage() {
                             key={time}
                             onClick={() => available && setBookingTime(time)}
                             disabled={!available}
-                            className={`px-4 py-3 rounded-xl font-display font-bold transition-all ${
+                            className={`px-4 py-3 rounded-xl font-display font-bold text-xl transition-all ${
                               bookingTime === time
                                 ? "bg-primary text-primary-foreground shadow-md"
                                 : available
@@ -403,7 +403,7 @@ export default function SchedulePage() {
 
                   {/* Language Selection */}
                   <div>
-                    <label className="font-display text-sm font-semibold mb-3 block flex items-center gap-2">
+                    <label className="font-display text-xl font-semibold mb-3 block flex items-center gap-2">
                       🌐 Select Language
                     </label>
                     <div className="grid grid-cols-3 gap-2">
@@ -414,7 +414,7 @@ export default function SchedulePage() {
                             key={lang}
                             onClick={() => available && setBookingLanguage(lang)}
                             disabled={!available}
-                            className={`px-3 py-3 rounded-xl font-body text-sm transition-all flex items-center justify-center gap-2 ${
+                            className={`px-3 py-3 rounded-xl font-body text-xl transition-all flex items-center justify-center gap-2 ${
                               bookingLanguage === lang
                                 ? "bg-primary text-primary-foreground shadow-md"
                                 : available
@@ -422,7 +422,7 @@ export default function SchedulePage() {
                                   : "bg-muted text-muted-foreground cursor-not-allowed opacity-50"
                             }`}
                           >
-                            <span className="text-lg">{languageConfig[lang].flag}</span>
+                            <span className="text-xl">{languageConfig[lang].flag}</span>
                             <span className="hidden sm:inline">{languageConfig[lang].label}</span>
                           </button>
                         );
@@ -432,8 +432,8 @@ export default function SchedulePage() {
 
                   {/* Ticket Type */}
                   <div>
-                    <label className="font-display text-sm font-semibold mb-3 block flex items-center gap-2">
-                      <Ticket className="w-4 h-4 text-primary" />
+                    <label className="font-display text-xl font-semibold mb-3 block flex items-center gap-2">
+                      <Ticket className="w-5 h-5 text-primary" />
                       Ticket Type
                     </label>
                     <div className="grid grid-cols-2 gap-3">
@@ -446,14 +446,14 @@ export default function SchedulePage() {
                         }`}
                       >
                         <div className="flex items-center justify-between mb-1">
-                          <span className="font-display font-bold text-sm">Individual</span>
-                          <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                          <span className="font-display font-bold text-xl">Individual</span>
+                          <span className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                             ticketType === "individual" ? "border-primary bg-primary" : "border-muted-foreground"
                           }`}>
-                            {ticketType === "individual" && <Check className="w-2 h-2 text-primary-foreground" />}
+                            {ticketType === "individual" && <Check className="w-3 h-3 text-primary-foreground" />}
                           </span>
                         </div>
-                        <p className="font-body text-xs text-muted-foreground">
+                        <p className="font-body text-xl text-muted-foreground">
                           €17.50/person
                         </p>
                       </button>
@@ -466,18 +466,18 @@ export default function SchedulePage() {
                             : "border-border hover:border-primary/50"
                         }`}
                       >
-                        <Badge className="absolute -top-2 right-2 bg-accent text-accent-foreground text-xs px-2 py-0.5">
+                        <Badge className="absolute -top-2 right-2 bg-accent text-accent-foreground text-xl px-2 py-0.5">
                           Best Value
                         </Badge>
                         <div className="flex items-center justify-between mb-1">
-                          <span className="font-display font-bold text-sm">Family</span>
-                          <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                          <span className="font-display font-bold text-xl">Family</span>
+                          <span className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                             ticketType === "family" ? "border-primary bg-primary" : "border-muted-foreground"
                           }`}>
-                            {ticketType === "family" && <Check className="w-2 h-2 text-primary-foreground" />}
+                            {ticketType === "family" && <Check className="w-3 h-3 text-primary-foreground" />}
                           </span>
                         </div>
-                        <p className="font-body text-xs text-muted-foreground">
+                        <p className="font-body text-xl text-muted-foreground">
                           €60 for up to 4
                         </p>
                       </button>
@@ -487,14 +487,14 @@ export default function SchedulePage() {
                   {/* People Count - Only for individual */}
                   {ticketType === "individual" && (
                     <div>
-                      <label className="font-display text-sm font-semibold mb-3 block flex items-center gap-2">
-                        <Users className="w-4 h-4 text-primary" />
+                      <label className="font-display text-xl font-semibold mb-3 block flex items-center gap-2">
+                        <Users className="w-5 h-5 text-primary" />
                         Number of People
                       </label>
                       <div className="flex items-center gap-4 bg-secondary rounded-xl p-2">
                         <button
                           onClick={() => setBookingPeople(Math.max(1, bookingPeople - 1))}
-                          className="w-10 h-10 rounded-lg bg-card hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center font-bold"
+                          className="w-12 h-12 rounded-lg bg-card hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center font-bold text-xl"
                         >
                           -
                         </button>
@@ -503,7 +503,7 @@ export default function SchedulePage() {
                         </span>
                         <button
                           onClick={() => setBookingPeople(Math.min(12, bookingPeople + 1))}
-                          className="w-10 h-10 rounded-lg bg-card hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center font-bold"
+                          className="w-12 h-12 rounded-lg bg-card hover:bg-primary hover:text-primary-foreground transition-colors flex items-center justify-center font-bold text-xl"
                         >
                           +
                         </button>
@@ -514,26 +514,26 @@ export default function SchedulePage() {
                   {/* Summary & Add Button */}
                   <div className="border-t border-border pt-6">
                     <div className="bg-secondary/50 rounded-xl p-4 mb-4">
-                      <div className="flex items-center justify-between text-sm mb-2">
+                      <div className="flex items-center justify-between text-xl mb-2">
                         <span className="text-muted-foreground">Selection</span>
                         <span className="font-display font-semibold">
                           {bookingDay}, {bookingTime} • {languageConfig[bookingLanguage].flag} {languageConfig[bookingLanguage].label}
                         </span>
                       </div>
-                      <div className="flex items-center justify-between text-sm mb-2">
+                      <div className="flex items-center justify-between text-xl mb-2">
                         <span className="text-muted-foreground">Ticket</span>
                         <span className="font-display font-semibold">
                           {ticketType === "family" ? "Family (up to 4)" : `${bookingPeople} ${bookingPeople === 1 ? "person" : "people"}`}
                         </span>
                       </div>
                       <div className="flex items-center justify-between pt-2 border-t border-border mt-2">
-                        <span className="font-display font-bold">Total</span>
+                        <span className="font-display font-bold text-xl">Total</span>
                         <span className="font-display text-2xl font-bold text-primary">
                           €{calculatePrice().toFixed(2)}
                         </span>
                       </div>
                       {ticketType === "family" && (
-                        <p className="text-xs text-green-600 mt-1 text-right">
+                        <p className="text-xl text-green-600 mt-1 text-right">
                           Save €{((17.50 * 4) - 60).toFixed(2)} vs individual tickets!
                         </p>
                       )}
@@ -551,7 +551,7 @@ export default function SchedulePage() {
                     </Button>
                     
                     {!isSlotAvailable && (
-                      <p className="text-sm text-destructive mt-2 text-center">
+                      <p className="text-xl text-destructive mt-2 text-center">
                         This slot is not available. Please select a different time or language.
                       </p>
                     )}
@@ -563,8 +563,8 @@ export default function SchedulePage() {
             {/* Tour Route - Right Side (2 cols) */}
             <div className="lg:col-span-2 order-1 lg:order-2">
               <div className="sticky top-32">
-                <h3 className="font-display text-xl font-bold mb-4 flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-primary" />
+                <h3 className="font-display text-2xl font-bold mb-4 flex items-center gap-2">
+                  <MapPin className="w-6 h-6 text-primary" />
                   Tour Route
                 </h3>
                 
@@ -578,7 +578,7 @@ export default function SchedulePage() {
                       }`}
                     >
                       {/* Number Circle */}
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-base font-bold shrink-0 ${
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold shrink-0 ${
                         location.type === "start" ? "bg-green-500 text-white" :
                         location.type === "break" ? "bg-amber-500 text-white" :
                         location.type === "end" ? "bg-primary text-primary-foreground" :
@@ -589,21 +589,21 @@ export default function SchedulePage() {
                       
                       {/* Location Info */}
                       <div className="flex-1 min-w-0">
-                        <p className="font-display font-bold text-base leading-tight">
+                        <p className="font-display font-bold text-xl leading-tight">
                           {location.name}
                         </p>
-                        <p className="font-body text-muted-foreground text-sm leading-tight mt-0.5">
+                        <p className="font-body text-muted-foreground text-xl leading-tight mt-0.5">
                           {location.description}
                         </p>
                       </div>
                       
                       {/* Duration & Photo Badge */}
                       <div className="flex flex-col items-end gap-1 shrink-0">
-                        <span className="font-display font-semibold text-base text-foreground">
+                        <span className="font-display font-semibold text-xl text-foreground">
                           {location.duration}
                         </span>
                         {location.hasPhoto && (
-                          <Badge variant="secondary" className="text-xs">
+                          <Badge variant="secondary" className="text-xl py-1 px-2">
                             foto
                           </Badge>
                         )}
@@ -614,25 +614,25 @@ export default function SchedulePage() {
                   {/* Total Duration Footer */}
                   <div className="bg-secondary/50 p-4 border-t border-border flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Clock className="w-5 h-5 text-muted-foreground" />
-                      <span className="font-display font-bold text-base">Total duration</span>
+                      <Clock className="w-6 h-6 text-muted-foreground" />
+                      <span className="font-display font-bold text-xl">Total duration</span>
                     </div>
                     <div className="text-right">
-                      <span className="font-display font-bold text-xl text-primary">2.5 hours</span>
-                      <p className="font-body text-sm text-muted-foreground">5 min break + 1 drink</p>
+                      <span className="font-display font-bold text-2xl text-primary">2.5 hours</span>
+                      <p className="font-body text-xl text-muted-foreground">5 min break + 1 drink</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Meeting Point Info */}
                 <div className="mt-4 bg-primary/5 rounded-xl p-4 border border-primary/20">
-                  <p className="font-display font-semibold text-base mb-1">Meeting Point</p>
-                  <p className="font-body text-base text-muted-foreground">
+                  <p className="font-display font-semibold text-xl mb-1">Meeting Point</p>
+                  <p className="font-body text-xl text-muted-foreground">
                     Bavo Church, Grote Markt • Arrive 10 min early
                   </p>
-                  <Button variant="outline" size="sm" className="mt-3 w-full" asChild>
+                  <Button variant="outline" size="lg" className="mt-3 w-full" asChild>
                     <Link to="/map">
-                      <MapPin className="w-4 h-4 mr-2" />
+                      <MapPin className="w-5 h-5 mr-2" />
                       View on Map
                     </Link>
                   </Button>
@@ -650,7 +650,7 @@ export default function SchedulePage() {
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-2">
               Full Schedule
             </h2>
-            <p className="font-body text-muted-foreground">
+            <p className="font-body text-xl text-muted-foreground">
               All available tours during the festival
             </p>
           </div>
@@ -658,7 +658,7 @@ export default function SchedulePage() {
           <Tabs defaultValue="Thursday" className="max-w-4xl mx-auto">
             <TabsList className="w-full grid grid-cols-4 mb-6">
               {scheduleData.map((day) => (
-                <TabsTrigger key={day.day} value={day.day}>
+                <TabsTrigger key={day.day} value={day.day} className="text-xl">
                   {day.day}
                 </TabsTrigger>
               ))}
@@ -669,20 +669,20 @@ export default function SchedulePage() {
                 <div className="bg-card rounded-xl border border-border overflow-hidden">
                   {/* Guides Header */}
                   <div className="bg-primary/5 p-4 border-b border-border">
-                    <p className="font-body text-sm text-muted-foreground mb-2">Guides on duty:</p>
+                    <p className="font-body text-xl text-muted-foreground mb-2">Guides on duty:</p>
                     <div className="flex flex-wrap gap-2">
                       {day.guides.english.length > 0 && (
-                        <Badge variant="outline" className={languageConfig.english.color}>
+                        <Badge variant="outline" className={`${languageConfig.english.color} text-xl py-1 px-3`}>
                           🇬🇧 {day.guides.english.join(", ")}
                         </Badge>
                       )}
                       {day.guides.dutch.length > 0 && (
-                        <Badge variant="outline" className={languageConfig.dutch.color}>
+                        <Badge variant="outline" className={`${languageConfig.dutch.color} text-xl py-1 px-3`}>
                           🇳🇱 {day.guides.dutch.join(", ")}
                         </Badge>
                       )}
                       {day.guides.chinese.length > 0 && (
-                        <Badge variant="outline" className={languageConfig.chinese.color}>
+                        <Badge variant="outline" className={`${languageConfig.chinese.color} text-xl py-1 px-3`}>
                           🇨🇳 {day.guides.chinese.join(", ")}
                         </Badge>
                       )}
@@ -694,29 +694,29 @@ export default function SchedulePage() {
                     {day.slots.map((slot) => (
                       <div key={slot.time} className="p-4">
                         <div className="flex items-center gap-4">
-                          <div className="font-display text-xl font-bold w-16">
+                          <div className="font-display text-2xl font-bold w-20">
                             {slot.time}
                           </div>
                           <div className="flex flex-wrap gap-2 flex-1">
                             {slot.english > 0 && (
-                              <Badge className={`${languageConfig.english.color} border`}>
+                              <Badge className={`${languageConfig.english.color} border text-xl py-1 px-3`}>
                                 🇬🇧 {slot.english} group{slot.english > 1 ? "s" : ""}
                               </Badge>
                             )}
                             {slot.dutch > 0 && (
-                              <Badge className={`${languageConfig.dutch.color} border`}>
+                              <Badge className={`${languageConfig.dutch.color} border text-xl py-1 px-3`}>
                                 🇳🇱 {slot.dutch} group{slot.dutch > 1 ? "s" : ""}
                               </Badge>
                             )}
                             {slot.chinese > 0 && (
-                              <Badge className={`${languageConfig.chinese.color} border`}>
+                              <Badge className={`${languageConfig.chinese.color} border text-xl py-1 px-3`}>
                                 🇨🇳 {slot.chinese} group{slot.chinese > 1 ? "s" : ""}
                               </Badge>
                             )}
                           </div>
                           <Button 
                             variant="outline" 
-                            size="sm"
+                            size="lg"
                             onClick={() => {
                               setBookingDay(day.day);
                               setBookingTime(slot.time);
@@ -724,7 +724,7 @@ export default function SchedulePage() {
                             }}
                           >
                             Book
-                            <ChevronRight className="w-4 h-4 ml-1" />
+                            <ChevronRight className="w-5 h-5 ml-1" />
                           </Button>
                         </div>
                       </div>
@@ -742,7 +742,7 @@ export default function SchedulePage() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-8">
             <h2 className="font-display text-2xl md:text-3xl font-bold mb-2">Pricing</h2>
-            <p className="font-body text-muted-foreground">
+            <p className="font-body text-xl text-muted-foreground">
               Reservation is mandatory for all tours
             </p>
           </div>
@@ -752,19 +752,19 @@ export default function SchedulePage() {
             <div className="bg-card rounded-xl p-6 border border-border shadow-sm">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="font-display font-bold">Individual</h3>
-                  <p className="font-body text-sm text-muted-foreground">Per person</p>
+                  <h3 className="font-display font-bold text-xl">Individual</h3>
+                  <p className="font-body text-xl text-muted-foreground">Per person</p>
                 </div>
                 <Ticket className="w-8 h-8 text-primary" />
               </div>
               <p className="font-display text-3xl font-bold mb-4">€17.50</p>
-              <ul className="space-y-2 text-sm">
+              <ul className="space-y-2 text-xl">
                 <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary" />
+                  <Check className="w-5 h-5 text-primary" />
                   2.5-hour guided tour
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary" />
+                  <Check className="w-5 h-5 text-primary" />
                   One drink included
                 </li>
               </ul>
@@ -772,23 +772,23 @@ export default function SchedulePage() {
 
             {/* Family */}
             <div className="bg-card rounded-xl p-6 border-2 border-primary shadow-sm relative">
-              <Badge className="absolute -top-3 left-4 bg-primary text-primary-foreground">Best Value</Badge>
+              <Badge className="absolute -top-3 left-4 bg-primary text-primary-foreground text-xl py-1 px-3">Best Value</Badge>
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="font-display font-bold">Family</h3>
-                  <p className="font-body text-sm text-muted-foreground">Up to 4 persons</p>
+                  <h3 className="font-display font-bold text-xl">Family</h3>
+                  <p className="font-body text-xl text-muted-foreground">Up to 4 persons</p>
                 </div>
                 <Users className="w-8 h-8 text-primary" />
               </div>
               <p className="font-display text-3xl font-bold mb-1">€60.00</p>
-              <p className="font-body text-sm text-green-600 mb-4">Save €10</p>
-              <ul className="space-y-2 text-sm">
+              <p className="font-body text-xl text-green-600 mb-4">Save €10</p>
+              <ul className="space-y-2 text-xl">
                 <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary" />
+                  <Check className="w-5 h-5 text-primary" />
                   Up to 4 family members
                 </li>
                 <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary" />
+                  <Check className="w-5 h-5 text-primary" />
                   Drinks for everyone
                 </li>
               </ul>
@@ -804,10 +804,10 @@ export default function SchedulePage() {
             <div className="bg-amber-100 dark:bg-amber-900/30 rounded-xl p-6 border-l-4 border-amber-500 flex gap-4">
               <AlertTriangle className="w-6 h-6 text-amber-600 dark:text-amber-400 shrink-0" />
               <div>
-                <h3 className="font-display font-bold text-amber-900 dark:text-amber-100 mb-2">
+                <h3 className="font-display font-bold text-amber-900 dark:text-amber-100 mb-2 text-xl">
                   Important Remarks
                 </h3>
-                <p className="font-body text-amber-800 dark:text-amber-200">
+                <p className="font-body text-amber-800 dark:text-amber-200 text-xl">
                   Participants must be minimum <strong>12 years old</strong>. <strong>No strollers</strong> allowed. 
                   Groups consist of <strong>12 participants + 1 guide</strong>.
                 </p>
@@ -821,8 +821,8 @@ export default function SchedulePage() {
       <section className="py-8 bg-card border-t border-border">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto flex items-start gap-4 bg-primary/5 rounded-xl p-4 border border-primary/20">
-            <Info className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-            <p className="font-body text-sm text-muted-foreground">
+            <Info className="w-6 h-6 text-primary shrink-0 mt-0.5" />
+            <p className="font-body text-xl text-muted-foreground">
               <strong className="text-foreground">Reservation Required</strong> – Walk-ins not accepted. 
               Please arrive 10 minutes before departure at Bavo Church, Grote Markt.
             </p>
