@@ -112,15 +112,15 @@ const scheduleData: DaySchedule[] = [
 ];
 
 const tourLocations = [
-  { number: 1, name: "Bavo Church", icon: "⛪", type: "start" },
-  { number: 2, name: "Grote Markt", icon: "🏛️" },
-  { number: 3, name: "Corrie ten Boom House", icon: "🏠" },
-  { number: 4, name: "Hofje van Bakenes", icon: "🌿" },
-  { number: 5, name: "Teylers Museum", icon: "🏛️" },
-  { number: 6, name: "Spaarne River", icon: "🌊" },
-  { number: 7, name: "Amsterdamse Poort", icon: "🏰" },
-  { number: 8, name: "Jopenkerk", icon: "🍺", type: "break" },
-  { number: 9, name: "Proveniershof", icon: "🌸", type: "end" },
+  { number: 1, name: "Church of St. Bavo", description: "Gothic masterpiece with famous Müller organ", duration: "20 m", type: "start" },
+  { number: 2, name: "Grote Markt", description: "Historic main square and heart of Haarlem", duration: "15 m" },
+  { number: 3, name: "De Hallen", description: "Contemporary art museum in historic building", duration: "15 m" },
+  { number: 4, name: "Proveniershof", description: "Beautiful 17th-century almshouse courtyard", duration: "10 m" },
+  { number: 5, name: "Jopenkerk", description: "Historic church turned craft brewery", duration: "15 m", hasPhoto: true, type: "break" },
+  { number: 6, name: "Waalse Kerk", description: "Charming Walloon church with rich history", duration: "10 m" },
+  { number: 7, name: "Molen de Adriaan", description: "Iconic windmill with panoramic city views", duration: "15 m" },
+  { number: 8, name: "Amsterdamse Poort", description: "Medieval city gate, built in 1400", duration: "10 m" },
+  { number: 9, name: "Hof van Bakenes", description: "One of Haarlem's oldest hofjes from 1395", duration: "10 m", type: "end" },
 ];
 
 const languageConfig = {
@@ -567,51 +567,67 @@ export default function SchedulePage() {
                   <MapPin className="w-5 h-5 text-primary" />
                   Tour Route
                 </h3>
-                <p className="font-body text-sm text-muted-foreground mb-4">
-                  9 historic locations you'll visit
-                </p>
                 
                 {/* Compact Route Timeline */}
                 <div className="bg-card rounded-xl border border-border overflow-hidden">
                   {tourLocations.map((location, index) => (
                     <div 
                       key={location.number}
-                      className={`flex items-center gap-3 p-3 ${
+                      className={`flex items-center gap-4 p-4 ${
                         index !== tourLocations.length - 1 ? "border-b border-border" : ""
-                      } ${
-                        location.type === "start" ? "bg-green-50 dark:bg-green-950/20" :
-                        location.type === "break" ? "bg-amber-50 dark:bg-amber-950/20" :
-                        location.type === "end" ? "bg-primary/5" : ""
                       }`}
                     >
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${
+                      {/* Number Circle */}
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-base font-bold shrink-0 ${
                         location.type === "start" ? "bg-green-500 text-white" :
                         location.type === "break" ? "bg-amber-500 text-white" :
                         location.type === "end" ? "bg-primary text-primary-foreground" :
-                        "bg-secondary text-foreground"
+                        "bg-primary text-primary-foreground"
                       }`}>
                         {location.number}
                       </div>
+                      
+                      {/* Location Info */}
                       <div className="flex-1 min-w-0">
-                        <p className="font-display font-semibold text-sm truncate flex items-center gap-2">
-                          <span>{location.icon}</span>
+                        <p className="font-display font-bold text-base leading-tight">
                           {location.name}
                         </p>
+                        <p className="font-body text-muted-foreground text-sm leading-tight mt-0.5">
+                          {location.description}
+                        </p>
                       </div>
-                      {location.type && (
-                        <Badge variant="secondary" className="text-xs shrink-0">
-                          {location.type === "start" ? "Start" : 
-                           location.type === "break" ? "🍺 Break" : "End"}
-                        </Badge>
-                      )}
+                      
+                      {/* Duration & Photo Badge */}
+                      <div className="flex flex-col items-end gap-1 shrink-0">
+                        <span className="font-display font-semibold text-base text-foreground">
+                          {location.duration}
+                        </span>
+                        {location.hasPhoto && (
+                          <Badge variant="secondary" className="text-xs">
+                            foto
+                          </Badge>
+                        )}
+                      </div>
                     </div>
                   ))}
+                  
+                  {/* Total Duration Footer */}
+                  <div className="bg-secondary/50 p-4 border-t border-border flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-5 h-5 text-muted-foreground" />
+                      <span className="font-display font-bold text-base">Total duration</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="font-display font-bold text-xl text-primary">2.5 hours</span>
+                      <p className="font-body text-sm text-muted-foreground">5 min break + 1 drink</p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Meeting Point Info */}
                 <div className="mt-4 bg-primary/5 rounded-xl p-4 border border-primary/20">
-                  <p className="font-display font-semibold text-sm mb-1">Meeting Point</p>
-                  <p className="font-body text-sm text-muted-foreground">
+                  <p className="font-display font-semibold text-base mb-1">Meeting Point</p>
+                  <p className="font-body text-base text-muted-foreground">
                     Bavo Church, Grote Markt • Arrive 10 min early
                   </p>
                   <Button variant="outline" size="sm" className="mt-3 w-full" asChild>
