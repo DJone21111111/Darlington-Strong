@@ -193,7 +193,7 @@ export default function HomePage() {
             <div className="space-y-8">
               <div className="relative">
                 <span className="font-display text-9xl font-bold text-burgundy/10 absolute -top-8 -left-4">15</span>
-                <h3 className="font-display text-2xl font-bold text-foreground relative z-10">72-73</h3>
+                <h3 className="font-display text-2xl font-bold text-foreground relative z-10">The Siege of Haarlem (1572-73)</h3>
               </div>
               <p className="font-body text-lg text-foreground/80 leading-relaxed">
                 The <strong className="text-primary">Siege of Haarlem</strong> during the Eighty Years' War remains a defining moment in Dutch history. For seven months, citizens heroically resisted Spanish forces in what became a symbol of Dutch determination for independence.
