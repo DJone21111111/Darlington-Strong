@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Heart, Search, MapPin, Globe, Calendar, Map, Church, Building2 } from "lucide-react";
+import { Menu, X, Heart, Search, MapPin, Globe, Calendar, Map, Church, Building2, Wind } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -16,6 +16,7 @@ const historySubLinks = [
   { name: "Route Map", path: "/map", icon: Map },
   { name: "Grote Kerk", path: "/grote-kerk", icon: Church },
   { name: "Teylers Museum", path: "/teylers-museum", icon: Building2 },
+  { name: "Molen de Adriaan", path: "/molen-de-adriaan", icon: Wind },
 ];
 
 export function Navigation() {
@@ -37,7 +38,7 @@ export function Navigation() {
   }, [location]);
 
   const isHistorySection = (path: string) => {
-    return path === "/" || path === "/grote-kerk" || path === "/teylers-museum" || path === "/schedule" || path === "/map";
+    return path === "/" || path === "/grote-kerk" || path === "/teylers-museum" || path === "/molen-de-adriaan" || path === "/schedule" || path === "/map";
   };
 
   const showSubNav = isHistorySection(location.pathname);
