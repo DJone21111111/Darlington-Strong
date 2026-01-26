@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
 import HomePage from "./pages/HomePage";
 import GroteKerkPage from "./pages/GroteKerkPage";
-import TeylersMuseumPage from "./pages/TeylersMuseumPage";
+
 import MolenDeAdriaanPage from "./pages/MolenDeAdriaanPage";
 import SchedulePage from "./pages/SchedulePage";
 import MapPage from "./pages/MapPage";
@@ -24,7 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/grote-kerk" element={<GroteKerkPage />} />
-            <Route path="/teylers-museum" element={<TeylersMuseumPage />} />
+            
             <Route path="/molen-de-adriaan" element={<MolenDeAdriaanPage />} />
             <Route path="/schedule" element={<SchedulePage />} />
             <Route path="/map" element={<MapPage />} />
