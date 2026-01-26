@@ -101,9 +101,21 @@ export default function HomePage() {
       {/* Photo Gallery Banner - Immersive Visual Break */}
       <section className="relative py-4 bg-charcoal overflow-hidden">
         <div className="flex gap-4 animate-scroll-left">
-          {[groteKerkExterior, molenExterior, museumGallery, hofjeGarden, windmillSunset, groteMarktLife, groteKerkInterior].map((img, i) => (
-            <div key={i} className="flex-shrink-0 w-72 h-48 rounded-lg overflow-hidden">
-              <img src={img} alt="" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+          {[
+            { img: groteKerkExterior, label: "Church of St. Bavo" },
+            { img: molenExterior, label: "Molen de Adriaan" },
+            { img: museumGallery, label: "Frans Hals Museum" },
+            { img: hofjeGarden, label: "Hidden Hofjes" },
+            { img: windmillSunset, label: "Spaarne River" },
+            { img: groteMarktLife, label: "Grote Markt" },
+            { img: groteKerkInterior, label: "Gothic Interior" },
+          ].map((item, i) => (
+            <div key={i} className="flex-shrink-0 w-72 h-48 rounded-lg overflow-hidden relative group">
+              <img src={item.img} alt={item.label} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-4">
+                <p className="font-display text-lg font-semibold text-cream">{item.label}</p>
+              </div>
             </div>
           ))}
         </div>
