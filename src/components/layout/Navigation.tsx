@@ -15,7 +15,7 @@ const historySubLinks = [
   { name: "Tour Schedule", path: "/schedule", icon: Calendar },
   { name: "Route Map", path: "/map", icon: Map },
   { name: "Grote Kerk", path: "/grote-kerk", icon: Church },
-  { name: "Teylers Museum", path: "/teylers-museum", icon: Building2 },
+  
   { name: "Molen de Adriaan", path: "/molen-de-adriaan", icon: Wind },
 ];
 
@@ -38,7 +38,7 @@ export function Navigation() {
   }, [location]);
 
   const isHistorySection = (path: string) => {
-    return path === "/" || path === "/grote-kerk" || path === "/teylers-museum" || path === "/molen-de-adriaan" || path === "/schedule" || path === "/map";
+    return path === "/" || path === "/grote-kerk" || path === "/molen-de-adriaan" || path === "/schedule" || path === "/map";
   };
 
   const showSubNav = isHistorySection(location.pathname);

@@ -5,9 +5,6 @@ import heroImage from "@/assets/hero-haarlem.jpg";
 import groteKerkExterior from "@/assets/grote-kerk-exterior.jpg";
 import groteKerkInterior from "@/assets/grote-kerk-interior.jpg";
 import groteKerkHistoric from "@/assets/grote-kerk-historic.jpg";
-import teylersExterior from "@/assets/teylers-exterior.jpg";
-import teylersInterior from "@/assets/teylers-interior.jpg";
-import teylersHistoric from "@/assets/teylers-historic.jpg";
 import molenExterior from "@/assets/molen-de-adriaan-exterior.jpg";
 import haarlemAerial from "@/assets/haarlem-aerial.jpg";
 import museumGallery from "@/assets/museum-gallery.jpg";
@@ -104,7 +101,7 @@ export default function HomePage() {
       {/* Photo Gallery Banner - Immersive Visual Break */}
       <section className="relative py-4 bg-charcoal overflow-hidden">
         <div className="flex gap-4 animate-scroll-left">
-          {[groteKerkExterior, teylersExterior, museumGallery, hofjeGarden, windmillSunset, groteMarktLife, groteKerkInterior, teylersInterior].map((img, i) => (
+          {[groteKerkExterior, molenExterior, museumGallery, hofjeGarden, windmillSunset, groteMarktLife, groteKerkInterior].map((img, i) => (
             <div key={i} className="flex-shrink-0 w-72 h-48 rounded-lg overflow-hidden">
               <img src={img} alt="" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
             </div>
@@ -351,62 +348,6 @@ export default function HomePage() {
             </div>
           </article>
 
-          {/* Teylers Museum Feature */}
-          <article className="relative mb-24 group">
-            <div className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-hover bg-card">
-              <div className="order-2 lg:order-1 p-10 lg:p-14 flex flex-col justify-center">
-                <div className="flex items-center gap-2 mb-4">
-                  <Star className="w-5 h-5 text-gold fill-gold" />
-                  <Star className="w-5 h-5 text-gold fill-gold" />
-                  <Star className="w-5 h-5 text-gold fill-gold" />
-                  <Star className="w-5 h-5 text-gold fill-gold" />
-                  <Star className="w-5 h-5 text-gold fill-gold" />
-                  <span className="font-body text-base text-muted-foreground ml-2">Cultural Treasure</span>
-                </div>
-                <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  Teylers Museum
-                </h3>
-                <p className="font-body text-foreground/80 leading-relaxed mb-6">
-                  The oldest museum in the Netherlands, Teylers is a monument to Enlightenment thinking. Founded by wealthy silk merchant Pieter Teyler van der Hulst, its stunning Oval Room remains virtually unchanged since the 18th century.
-                </p>
-                <ul className="grid grid-cols-2 gap-4 mb-8">
-                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
-                    <span className="w-2 h-2 rounded-full bg-gold" />
-                    Founded 1778
-                  </li>
-                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
-                    <span className="w-2 h-2 rounded-full bg-gold" />
-                    Rembrandt Drawings
-                  </li>
-                  <li className="flex items-center gap-2 font-body text-sm text-muted-foreground">
-                    <span className="w-2 h-2 rounded-full bg-gold" />
-                    Historic Oval Room
-                  </li>
-                  <li className="flex items-center gap-2 font-body text-sm text-muted-foreground">
-                    <span className="w-2 h-2 rounded-full bg-gold" />
-                    Science Collection
-                  </li>
-                </ul>
-                <Button variant="outline" size="lg" asChild className="w-fit group/btn">
-                  <Link to="/teylers-museum" aria-label="Learn more about Teylers Museum">
-                    Explore This Location
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" aria-hidden="true" />
-                  </Link>
-                </Button>
-              </div>
-              {/* Single Image */}
-              <div className="order-1 lg:order-2 relative h-[500px] lg:h-auto overflow-hidden">
-                <img
-                  src={teylersExterior}
-                  alt="Teylers Museum historic facade"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute top-4 right-4 bg-gold text-charcoal px-4 py-2 rounded-full font-display font-bold text-base">
-                  Est. 1778
-                </div>
-              </div>
-            </div>
-          </article>
 
           {/* Molen de Adriaan Feature */}
           <article className="relative group">
