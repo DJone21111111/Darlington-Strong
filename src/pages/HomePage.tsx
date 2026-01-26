@@ -8,6 +8,7 @@ import groteKerkHistoric from "@/assets/grote-kerk-historic.jpg";
 import teylersExterior from "@/assets/teylers-exterior.jpg";
 import teylersInterior from "@/assets/teylers-interior.jpg";
 import teylersHistoric from "@/assets/teylers-historic.jpg";
+import molenExterior from "@/assets/molen-de-adriaan-exterior.jpg";
 import haarlemAerial from "@/assets/haarlem-aerial.jpg";
 import museumGallery from "@/assets/museum-gallery.jpg";
 import hofjeGarden from "@/assets/hofje-garden.jpg";
@@ -351,7 +352,7 @@ export default function HomePage() {
           </article>
 
           {/* Teylers Museum Feature */}
-          <article className="relative group">
+          <article className="relative mb-24 group">
             <div className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-hover bg-card">
               <div className="order-2 lg:order-1 p-10 lg:p-14 flex flex-col justify-center">
                 <div className="flex items-center gap-2 mb-4">
@@ -403,6 +404,63 @@ export default function HomePage() {
                 <div className="absolute top-4 right-4 bg-gold text-charcoal px-4 py-2 rounded-full font-display font-bold text-base">
                   Est. 1778
                 </div>
+              </div>
+            </div>
+          </article>
+
+          {/* Molen de Adriaan Feature */}
+          <article className="relative group">
+            <div className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-hover bg-card">
+              {/* Single Image */}
+              <div className="relative h-[500px] lg:h-auto overflow-hidden">
+                <img
+                  src={molenExterior}
+                  alt="Molen de Adriaan windmill exterior"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute top-4 left-4 bg-gold text-charcoal px-4 py-2 rounded-full font-display font-bold text-base">
+                  Est. 1779
+                </div>
+              </div>
+              <div className="p-10 lg:p-14 flex flex-col justify-center">
+                <div className="flex items-center gap-2 mb-4">
+                  <Star className="w-5 h-5 text-gold fill-gold" />
+                  <Star className="w-5 h-5 text-gold fill-gold" />
+                  <Star className="w-5 h-5 text-gold fill-gold" />
+                  <Star className="w-5 h-5 text-gold fill-gold" />
+                  <Star className="w-5 h-5 text-gold fill-gold" />
+                  <span className="font-body text-base text-muted-foreground ml-2">Iconic Landmark</span>
+                </div>
+                <h3 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                  Molen de Adriaan
+                </h3>
+                <p className="font-body text-foreground/80 leading-relaxed mb-6">
+                  This iconic Dutch windmill stands proudly on the banks of the Spaarne River. Originally built in 1779, it was faithfully reconstructed in 2002 after a devastating fire, and now serves as a working museum showcasing traditional milling techniques.
+                </p>
+                <ul className="grid grid-cols-2 gap-4 mb-8">
+                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
+                    <span className="w-2 h-2 rounded-full bg-gold" />
+                    Built 1779
+                  </li>
+                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
+                    <span className="w-2 h-2 rounded-full bg-gold" />
+                    Panoramic Views
+                  </li>
+                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
+                    <span className="w-2 h-2 rounded-full bg-gold" />
+                    Working Museum
+                  </li>
+                  <li className="flex items-center gap-2 font-body text-base text-muted-foreground">
+                    <span className="w-2 h-2 rounded-full bg-gold" />
+                    Spaarne River
+                  </li>
+                </ul>
+                <Button variant="outline" size="lg" asChild className="w-fit group/btn">
+                  <Link to="/molen-de-adriaan" aria-label="Learn more about Molen de Adriaan">
+                    Explore This Location
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" aria-hidden="true" />
+                  </Link>
+                </Button>
               </div>
             </div>
           </article>
