@@ -141,87 +141,121 @@ export default function HomePage() {
             </h2>
           </header>
 
-          {/* History Content with Images */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-            <div className="space-y-8">
-              <div className="relative">
-                <span className="font-display text-9xl font-bold text-primary/10 absolute -top-8 -left-4">10</span>
-                <h3 className="font-display text-2xl font-bold text-foreground relative z-10">Century of Origins</h3>
-              </div>
-              <p className="font-body text-lg text-foreground/80 leading-relaxed">
-                Founded in the <strong className="text-primary">10th century</strong>, Haarlem is one of the oldest cities in the Netherlands. 
-                Receiving its city rights in 1245, it became a vital center of commerce, art, and culture that would shape Dutch identity for centuries to come.
-              </p>
-              <p className="font-body text-lg text-foreground/80 leading-relaxed">
-                Just 20 kilometers west of Amsterdam, Haarlem has always stood as a proud rival—often surpassing the capital in cultural achievements during the <strong className="text-primary">Dutch Golden Age</strong>.
-              </p>
-            </div>
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500" />
-              <img 
-                src={haarlemAerial} 
-                alt="Aerial view of historic Haarlem city center" 
-                className="relative rounded-2xl shadow-hover w-full h-[500px] object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+          {/* History Content with Route Line */}
+          <div className="relative">
+            {/* SVG Route Line - Connecting the eras */}
+            <svg 
+              className="absolute left-1/2 top-0 h-full w-24 -translate-x-1/2 pointer-events-none hidden lg:block"
+              viewBox="0 0 100 1600"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M50,0 
+                   C50,100 80,150 80,250
+                   C80,350 20,400 20,500
+                   C20,600 80,650 80,750
+                   C80,850 20,900 20,1000
+                   C20,1100 80,1150 80,1250
+                   C80,1350 50,1400 50,1600"
+                fill="none"
+                stroke="hsl(var(--primary))"
+                strokeWidth="3"
+                strokeDasharray="12 8"
+                strokeLinecap="round"
+                className="animate-dash"
               />
-              <div className="absolute bottom-6 left-6 bg-card/90 backdrop-blur-sm rounded-lg p-4 shadow-elegant">
-                <p className="font-display font-bold text-foreground">City Center</p>
-                <p className="font-body text-base text-muted-foreground">Grote Markt at Golden Hour</p>
-              </div>
-            </div>
-          </div>
+              {/* Era markers */}
+              <circle cx="50" cy="100" r="12" fill="hsl(var(--primary))" className="animate-pulse" />
+              <circle cx="50" cy="100" r="6" fill="hsl(var(--card))" />
+              <circle cx="50" cy="800" r="12" fill="hsl(var(--accent))" className="animate-pulse" />
+              <circle cx="50" cy="800" r="6" fill="hsl(var(--card))" />
+              <circle cx="50" cy="1500" r="12" fill="hsl(var(--primary))" className="animate-pulse" />
+              <circle cx="50" cy="1500" r="6" fill="hsl(var(--card))" />
+            </svg>
 
-          {/* Golden Age Section */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
-            <div className="order-2 lg:order-1 relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-gold/20 rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500" />
-              <img 
-                src={museumGallery} 
-                alt="Golden Age paintings in museum gallery" 
-                className="relative rounded-2xl shadow-hover w-full h-[500px] object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-              />
-              <div className="absolute top-6 right-6 bg-card/90 backdrop-blur-sm rounded-lg p-4 shadow-elegant">
-                <p className="font-display font-bold text-foreground">Dutch Masters</p>
-                <p className="font-body text-base text-muted-foreground">Frans Hals & Contemporaries</p>
+            {/* Century of Origins */}
+            <div className="grid lg:grid-cols-2 gap-16 items-center mb-24 relative">
+              <div className="space-y-8">
+                <div className="relative">
+                  <span className="font-display text-9xl font-bold text-primary/10 absolute -top-8 -left-4">10</span>
+                  <h3 className="font-display text-2xl font-bold text-foreground relative z-10">Century of Origins</h3>
+                </div>
+                <p className="font-body text-lg text-foreground/80 leading-relaxed">
+                  Founded in the <strong className="text-primary">10th century</strong>, Haarlem is one of the oldest cities in the Netherlands. 
+                  Receiving its city rights in 1245, it became a vital center of commerce, art, and culture that would shape Dutch identity for centuries to come.
+                </p>
+                <p className="font-body text-lg text-foreground/80 leading-relaxed">
+                  Just 20 kilometers west of Amsterdam, Haarlem has always stood as a proud rival—often surpassing the capital in cultural achievements during the <strong className="text-primary">Dutch Golden Age</strong>.
+                </p>
+              </div>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500" />
+                <img 
+                  src={haarlemAerial} 
+                  alt="Aerial view of historic Haarlem city center" 
+                  className="relative rounded-2xl shadow-hover w-full h-[500px] object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+                />
+                <div className="absolute bottom-6 left-6 bg-card/90 backdrop-blur-sm rounded-lg p-4 shadow-elegant">
+                  <p className="font-display font-bold text-foreground">City Center</p>
+                  <p className="font-body text-base text-muted-foreground">Grote Markt at Golden Hour</p>
+                </div>
               </div>
             </div>
-            <div className="order-1 lg:order-2 space-y-8">
-              <div className="relative">
-                <span className="font-display text-9xl font-bold text-accent/10 absolute -top-8 -left-4">17</span>
-                <h3 className="font-display text-2xl font-bold text-foreground relative z-10">The Golden Age</h3>
-              </div>
-              <p className="font-body text-lg text-foreground/80 leading-relaxed">
-                The 17th century saw Haarlem flourish as Europe's artistic capital. Home to legendary painters <em className="text-primary">Frans Hals</em>, <em className="text-primary">Jacob van Ruisdael</em>, and <em className="text-primary">Adriaen van Ostade</em>, the Haarlem School of painting rivaled even Amsterdam in prestige.
-              </p>
-              <p className="font-body text-lg text-foreground/80 leading-relaxed">
-                The city's economy thrived on textile production, earning the nickname <strong className="text-primary">"Linen City"</strong>. This was also the epicenter of history's first speculative bubble—the legendary <em>Tulip Mania</em> of 1637.
-              </p>
-            </div>
-          </div>
 
-          {/* Siege of Haarlem */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <div className="relative">
-                <span className="font-display text-9xl font-bold text-burgundy/10 absolute -top-8 -left-4">15</span>
-                <h3 className="font-display text-2xl font-bold text-foreground relative z-10">The Siege of Haarlem (1572-73)</h3>
+            {/* Golden Age Section */}
+            <div className="grid lg:grid-cols-2 gap-16 items-center mb-24 relative">
+              <div className="order-2 lg:order-1 relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-gold/20 rounded-2xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500" />
+                <img 
+                  src={museumGallery} 
+                  alt="Golden Age paintings in museum gallery" 
+                  className="relative rounded-2xl shadow-hover w-full h-[500px] object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+                />
+                <div className="absolute top-6 right-6 bg-card/90 backdrop-blur-sm rounded-lg p-4 shadow-elegant">
+                  <p className="font-display font-bold text-foreground">Dutch Masters</p>
+                  <p className="font-body text-base text-muted-foreground">Frans Hals & Contemporaries</p>
+                </div>
               </div>
-              <p className="font-body text-lg text-foreground/80 leading-relaxed">
-                The <strong className="text-primary">Siege of Haarlem</strong> during the Eighty Years' War remains a defining moment in Dutch history. For seven months, citizens heroically resisted Spanish forces in what became a symbol of Dutch determination for independence.
-              </p>
-              <p className="font-body text-lg text-foreground/80 leading-relaxed">
-                Though the city ultimately fell, this resistance inspired the nation and is still commemorated today as a testament to the indomitable Dutch spirit.
-              </p>
+              <div className="order-1 lg:order-2 space-y-8">
+                <div className="relative">
+                  <span className="font-display text-9xl font-bold text-accent/10 absolute -top-8 -left-4">17</span>
+                  <h3 className="font-display text-2xl font-bold text-foreground relative z-10">The Golden Age</h3>
+                </div>
+                <p className="font-body text-lg text-foreground/80 leading-relaxed">
+                  The 17th century saw Haarlem flourish as Europe's artistic capital. Home to legendary painters <em className="text-primary">Frans Hals</em>, <em className="text-primary">Jacob van Ruisdael</em>, and <em className="text-primary">Adriaen van Ostade</em>, the Haarlem School of painting rivaled even Amsterdam in prestige.
+                </p>
+                <p className="font-body text-lg text-foreground/80 leading-relaxed">
+                  The city's economy thrived on textile production, earning the nickname <strong className="text-primary">"Linen City"</strong>. This was also the epicenter of history's first speculative bubble—the legendary <em>Tulip Mania</em> of 1637.
+                </p>
+              </div>
             </div>
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-br from-burgundy/20 to-primary/20 rounded-2xl transform rotate-2 group-hover:rotate-4 transition-transform duration-500" />
-              <img 
-                src={groteMarktLife} 
-                alt="Vibrant Grote Markt market square in Haarlem" 
-                className="relative rounded-2xl shadow-hover w-full h-[500px] object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
-              />
-              <div className="absolute bottom-6 right-6 bg-card/90 backdrop-blur-sm rounded-lg p-4 shadow-elegant">
-                <p className="font-display font-bold text-foreground">Living Heritage</p>
-                <p className="font-body text-sm text-muted-foreground">Market Day Tradition</p>
+
+            {/* Siege of Haarlem */}
+            <div className="grid lg:grid-cols-2 gap-16 items-center relative">
+              <div className="space-y-8">
+                <div className="relative">
+                  <span className="font-display text-9xl font-bold text-burgundy/10 absolute -top-8 -left-4">15</span>
+                  <h3 className="font-display text-2xl font-bold text-foreground relative z-10">The Siege of Haarlem (1572-73)</h3>
+                </div>
+                <p className="font-body text-lg text-foreground/80 leading-relaxed">
+                  The <strong className="text-primary">Siege of Haarlem</strong> during the Eighty Years' War remains a defining moment in Dutch history. For seven months, citizens heroically resisted Spanish forces in what became a symbol of Dutch determination for independence.
+                </p>
+                <p className="font-body text-lg text-foreground/80 leading-relaxed">
+                  Though the city ultimately fell, this resistance inspired the nation and is still commemorated today as a testament to the indomitable Dutch spirit.
+                </p>
+              </div>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-burgundy/20 to-primary/20 rounded-2xl transform rotate-2 group-hover:rotate-4 transition-transform duration-500" />
+                <img 
+                  src={groteMarktLife} 
+                  alt="Vibrant Grote Markt market square in Haarlem" 
+                  className="relative rounded-2xl shadow-hover w-full h-[500px] object-cover transform group-hover:scale-[1.02] transition-transform duration-500"
+                />
+                <div className="absolute bottom-6 right-6 bg-card/90 backdrop-blur-sm rounded-lg p-4 shadow-elegant">
+                  <p className="font-display font-bold text-foreground">Living Heritage</p>
+                  <p className="font-body text-sm text-muted-foreground">Market Day Tradition</p>
+                </div>
               </div>
             </div>
           </div>
