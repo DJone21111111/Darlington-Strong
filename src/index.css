@@ -298,3 +298,13 @@
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.animate-dash {
+  animation: dash 1.5s linear infinite;
+}
