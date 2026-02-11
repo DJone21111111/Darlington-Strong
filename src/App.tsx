@@ -21,18 +21,21 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/grote-kerk" element={<GroteKerkPage />} />
-            
-            <Route path="/molen-de-adriaan" element={<MolenDeAdriaanPage />} />
-            <Route path="/schedule" element={<SchedulePage />} />
-            <Route path="/map" element={<MapPage />} />
-            <Route path="/auth" element={<AuthPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
+        <Routes>
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="*" element={
+            <Layout>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/grote-kerk" element={<GroteKerkPage />} />
+                <Route path="/molen-de-adriaan" element={<MolenDeAdriaanPage />} />
+                <Route path="/schedule" element={<SchedulePage />} />
+                <Route path="/map" element={<MapPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Layout>
+          } />
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
