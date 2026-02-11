@@ -96,15 +96,15 @@ export default function AuthPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/60 to-burgundy-dark/80" />
         <div className="relative z-10 flex flex-col justify-center p-16 text-primary-foreground">
           <h1 className="font-display text-5xl font-bold mb-4 leading-tight">
-            Discover the<br />History of<br />
+            Welcome to<br />
             <span className="text-accent">Haarlem</span>
           </h1>
           <p className="font-body text-lg text-primary-foreground/80 max-w-md leading-relaxed">
-            Sign in to save your favourite landmarks, plan your walking tour, and explore centuries of heritage.
+            Sign in to explore everything Haarlem has to offer — from stories and history to restaurants, dance, and jazz.
           </p>
           <div className="mt-8 flex items-center gap-3">
             <div className="w-12 h-px bg-accent" />
-            <span className="font-body text-sm uppercase tracking-widest text-accent">Est. 10th Century</span>
+            <span className="font-body text-sm uppercase tracking-widest text-accent">The City of Haarlem</span>
           </div>
         </div>
       </div>
@@ -129,8 +129,8 @@ export default function AuthPage() {
               {view === "reset" && "Reset Password"}
             </h2>
             <p className="font-body text-muted-foreground">
-              {view === "login" && "Sign in to continue your journey through Haarlem's history."}
-              {view === "register" && "Join us and start exploring Haarlem's rich heritage."}
+              {view === "login" && "Sign in to access all of Haarlem's features."}
+              {view === "register" && "Join us and start exploring everything Haarlem has to offer."}
               {view === "reset" && "Enter your email and we'll send you a reset link."}
             </p>
           </div>
