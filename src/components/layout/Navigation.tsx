@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Heart, Search, MapPin, Globe, Calendar, Map, Church, Building2, Wind } from "lucide-react";
+import { Menu, X, Heart, Search, MapPin, Globe, Calendar, Map, Church, Building2, Wind, LogIn } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -99,7 +99,13 @@ export function Navigation() {
             >
               Your Program
             </Link>
-            
+            <Link
+              to="/auth"
+              className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors"
+              aria-label="Login"
+            >
+              <LogIn className="w-5 h-5" />
+            </Link>
             <div className="flex items-center gap-1 ml-2">
               <button
                 className="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors"

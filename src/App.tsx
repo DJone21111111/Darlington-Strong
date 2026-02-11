@@ -10,6 +10,7 @@ import GroteKerkPage from "./pages/GroteKerkPage";
 import MolenDeAdriaanPage from "./pages/MolenDeAdriaanPage";
 import SchedulePage from "./pages/SchedulePage";
 import MapPage from "./pages/MapPage";
+import AuthPage from "./pages/AuthPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/molen-de-adriaan" element={<MolenDeAdriaanPage />} />
             <Route path="/schedule" element={<SchedulePage />} />
             <Route path="/map" element={<MapPage />} />
+            <Route path="/auth" element={<AuthPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
