@@ -168,13 +168,13 @@ export default function AuthPage() {
           {view === "login" && (
             <form onSubmit={handleLogin} className="space-y-5 animate-fade-in">
               <div className="space-y-2">
-                <Label htmlFor="email" className="font-body text-sm">Email</Label>
+                <Label htmlFor="email" className="font-body text-sm">Email or Username</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
                     id="email"
-                    type="email"
-                    placeholder="you@example.com"
+                    type="text"
+                    placeholder="you@example.com or username"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="pl-10"
