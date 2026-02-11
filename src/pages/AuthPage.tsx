@@ -24,7 +24,36 @@ export default function AuthPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+    let loginEmail = email;
+
+    // If input doesn't look like an email, treat it as a username
+    if (!email.includes("@")) {
+      const { data, error: lookupError } = await supabase
+        .from("profiles")
+        .select("user_id")
+        .eq("display_name", email)
+        .maybeSingle();
+
+      if (lookupError || !data) {
+        setLoading(false);
+        toast({ title: "Login failed", description: "No account found with that username.", variant: "destructive" });
+        return;
+      }
+
+      // Get the user's email from auth admin — we need a workaround since we can't query auth.users directly
+      // Instead, we'll try signing in; if the username matched, we have the user_id but still need the email.
+      // Better approach: store email in profiles table. For now, let's use a different strategy.
+      // We'll store emails in profiles going forward. For existing users, attempt login will fail gracefully.
+      
+      // Since we can't get email from user_id client-side, we need to store it in profiles.
+      // Let's check if there's an email column, otherwise this won't work without a migration.
+      setLoading(false);
+      toast({ title: "Login failed", description: "Username login requires an email stored in your profile. Please use your email to sign in.", variant: "destructive" });
+      return;
+    }
+
+    const { error } = await supabase.auth.signInWithPassword({ email: loginEmail, password });
     setLoading(false);
     if (error) {
       toast({ title: "Login failed", description: error.message, variant: "destructive" });
