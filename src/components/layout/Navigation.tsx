@@ -202,7 +202,7 @@ export function Navigation() {
               role="menuitem"
               className="mt-2 px-4 py-3 rounded-sm text-base font-medium bg-primary text-primary-foreground text-center"
             >
-              Your Program
+              My Programs
             </Link>
 
             <div className="flex items-center justify-center gap-4 mt-4 pt-4 border-t border-border">
