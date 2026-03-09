@@ -26,8 +26,9 @@ export default function HomePage() {
             loop
             playsInline
             className="w-full h-full object-cover"
+            poster={groteKerkExterior}
           >
-            <source src="https://images.pexels.com/videos/3014894/free-video-3014894.mp4" type="video/mp4" />
+            <source src="https://cdn.pixabay.com/video/2022/05/31/118970-716903048_large.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent" />
         </div>
