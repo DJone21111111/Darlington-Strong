@@ -4,11 +4,11 @@ import { Menu, X, Heart, Search, MapPin, Globe, Calendar, Map, Church, Building2
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Stories", path: "/stories", external: true },
   { name: "History", path: "/", active: true },
+  { name: "Stories", path: "/stories", external: true },
   { name: "Restaurants", path: "/restaurants", external: true },
-  { name: "Dance", path: "/dance", external: true },
   { name: "Jazz", path: "/jazz", external: true },
+  { name: "Dance", path: "/dance", external: true },
 ];
 
 const historySubLinks = [
