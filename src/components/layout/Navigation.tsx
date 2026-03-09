@@ -97,7 +97,7 @@ export function Navigation() {
                 "bg-primary text-primary-foreground hover:bg-primary/90"
               )}
             >
-              Your Program
+              My Programs
             </Link>
             <Link
               to="/auth"
