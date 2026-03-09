@@ -4,18 +4,17 @@ import { Menu, X, Heart, Search, MapPin, Globe, Calendar, Map, Church, Building2
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: "Stories", path: "/stories", external: true },
   { name: "History", path: "/", active: true },
+  { name: "Stories", path: "/stories", external: true },
   { name: "Restaurants", path: "/restaurants", external: true },
-  { name: "Dance", path: "/dance", external: true },
   { name: "Jazz", path: "/jazz", external: true },
+  { name: "Dance", path: "/dance", external: true },
 ];
 
 const historySubLinks = [
-  { name: "Tour Schedule", path: "/schedule", icon: Calendar },
+  { name: "Book Tour", path: "/schedule", icon: Calendar },
   { name: "Route Map", path: "/map", icon: Map },
-  { name: "Grote Kerk", path: "/grote-kerk", icon: Church },
-  
+  { name: "St. Bavo's Church", path: "/grote-kerk", icon: Church },
   { name: "Molen de Adriaan", path: "/molen-de-adriaan", icon: Wind },
 ];
 
@@ -97,7 +96,7 @@ export function Navigation() {
                 "bg-primary text-primary-foreground hover:bg-primary/90"
               )}
             >
-              Your Program
+              My Programs
             </Link>
             <Link
               to="/auth"
@@ -202,7 +201,7 @@ export function Navigation() {
               role="menuitem"
               className="mt-2 px-4 py-3 rounded-sm text-base font-medium bg-primary text-primary-foreground text-center"
             >
-              Your Program
+              My Programs
             </Link>
 
             <div className="flex items-center justify-center gap-4 mt-4 pt-4 border-t border-border">
