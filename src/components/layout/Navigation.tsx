@@ -12,10 +12,9 @@ const navLinks = [
 ];
 
 const historySubLinks = [
-  { name: "Tour Schedule", path: "/schedule", icon: Calendar },
+  { name: "Book Tour", path: "/schedule", icon: Calendar },
   { name: "Route Map", path: "/map", icon: Map },
   { name: "St. Bavo's Church", path: "/grote-kerk", icon: Church },
-  
   { name: "Molen de Adriaan", path: "/molen-de-adriaan", icon: Wind },
 ];
 
