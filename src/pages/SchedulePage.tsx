@@ -185,7 +185,7 @@ export default function SchedulePage() {
   const isSlotAvailable = getSlotAvailability(bookingDay, bookingTime, bookingLanguage) > 0;
 
   return (
-    <div className="pt-36">
+    <div className="pt-28">
       {/* Hero Section - Compact */}
       <section className="py-12 md:py-16 bg-primary text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -205,18 +205,7 @@ export default function SchedulePage() {
         </div>
       </section>
 
-      {/* Personal Program Floating Button */}
-      <button
-        onClick={() => setShowProgram(true)}
-        className="fixed bottom-6 right-6 z-50 bg-primary text-primary-foreground rounded-full p-4 shadow-lg hover:shadow-xl transition-all hover:scale-105 flex items-center gap-2"
-      >
-        <ShoppingBag className="w-6 h-6" />
-        {personalProgram.length > 0 && (
-          <span className="absolute -top-2 -right-2 w-6 h-6 bg-accent text-accent-foreground rounded-full text-xl font-bold flex items-center justify-center">
-            {personalProgram.length}
-          </span>
-        )}
-      </button>
+      {/* Personal Program Floating Button removed per design request */}
 
       {/* Personal Program Drawer */}
       {showProgram && (
@@ -346,8 +335,8 @@ export default function SchedulePage() {
             
             {/* Booking Form - Left Side (3 cols) */}
             <div className="lg:col-span-3 order-2 lg:order-1">
-              <div className="bg-card rounded-2xl shadow-card border border-border overflow-hidden">
-                <div className="bg-primary text-primary-foreground p-6">
+              <div className="schedule-card overflow-hidden">
+                <div className="bg-[#7b1b1b] text-white p-6 rounded-t-2xl">
                   <h2 className="font-display text-2xl font-bold">Book Your Tour</h2>
                   <p className="font-body text-primary-foreground/80 text-xl mt-1">
                     Select date, time, language, and ticket type

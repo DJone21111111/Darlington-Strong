@@ -1,7 +1,9 @@
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, MapPin, Clock, Users, Calendar, Star, Compass, Camera, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-haarlem.jpg";
+import heroImage from "@/assets/haarlem-aerial.jpg";
+import heroVideo from "@/assets/herovid-haarlem.mov";
 import groteKerkExterior from "@/assets/grote-kerk-exterior.jpg";
 import groteKerkInterior from "@/assets/grote-kerk-interior.jpg";
 import groteKerkHistoric from "@/assets/grote-kerk-historic.jpg";
@@ -11,8 +13,21 @@ import museumGallery from "@/assets/museum-gallery.jpg";
 import hofjeGarden from "@/assets/hofje-garden.jpg";
 import windmillSunset from "@/assets/windmill-sunset.jpg";
 import groteMarktLife from "@/assets/grote-markt-life.jpg";
+import HeroFrame from "@/components/HeroFrame";
 
 export default function HomePage() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    // Respect users who request reduced motion
+    try {
+      const mq = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+      if (mq?.matches && videoRef.current) videoRef.current.pause();
+    } catch (e) {
+      // noop
+    }
+  }, []);
+
   return (
     <main className="overflow-hidden">
       {/* Hero Section - Full Screen Immersive */}
@@ -21,72 +36,79 @@ export default function HomePage() {
         aria-labelledby="hero-heading"
       >
         {/* Background Image with Parallax Effect */}
-        <div className="absolute inset-0" aria-hidden="true">
-          <img
-            src={heroImage}
-            alt=""
+          <div className="absolute inset-0" aria-hidden="true">
+          <video
+            ref={videoRef}
+            src={heroVideo}
+            poster={heroImage}
             className="w-full h-full object-cover scale-110"
+            autoPlay
+            muted
+            loop
+            playsInline
             role="presentation"
+            aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/60 to-charcoal/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-charcoal/10 to-transparent" />
         </div>
 
         {/* Floating Elements */}
         <div className="absolute top-1/4 left-10 w-20 h-20 border border-gold/20 rounded-full animate-float opacity-30" aria-hidden="true" />
         <div className="absolute bottom-1/3 right-16 w-32 h-32 border border-cream/10 rounded-full animate-float animation-delay-200 opacity-20" aria-hidden="true" />
 
-        {/* Hero Content */}
-        <div className="relative container mx-auto px-6 pt-32 pb-20 text-center">
-          <div className="max-w-5xl mx-auto space-y-8">
-            <div className="opacity-0 animate-fade-up flex items-center justify-center gap-3">
-              <Sparkles className="w-5 h-5 text-gold" />
-              <p className="font-body text-base uppercase tracking-[0.4em] text-gold">
-                Experience the Dutch Golden Age
+        {/* Hero Content (left translucent card on large screens, centered on small) */}
+        <div className="relative container mx-auto px-6 pt-32 pb-20">
+          <div className="max-w-5xl mx-auto lg:mx-0">
+            <HeroFrame>
+              <div className="opacity-0 animate-fade-up flex items-center justify-center lg:justify-start gap-3">
+                <Sparkles className="w-5 h-5 text-gold" aria-hidden="true" />
+                <p className="font-body text-sm uppercase tracking-[0.4em] text-gold">
+                  Experience the Dutch Golden Age
+                </p>
+                <Sparkles className="w-5 h-5 text-gold" aria-hidden="true" />
+              </div>
+              <h1 
+                id="hero-heading"
+                className="opacity-0 animate-fade-up animation-delay-100 font-display text-4xl md:text-6xl lg:text-7xl font-extrabold text-charcoal leading-tight mt-4"
+              >
+                <span className="block text-[#0B0B0B]">Discover</span>
+                <span className="block text-gold italic lg:text-[4.5rem] md:text-5xl text-4xl mt-2">Haarlem</span>
+              </h1>
+              <p className="opacity-0 animate-fade-up animation-delay-200 font-body text-base md:text-lg text-foreground/90 max-w-xl mx-auto lg:mx-0 leading-relaxed mt-4">
+                Walk through 800 years of Dutch history in one unforgettable journey. From majestic churches to hidden courtyards, every step reveals a story.
               </p>
-              <Sparkles className="w-5 h-5 text-gold" />
-            </div>
-            <h1 
-              id="hero-heading"
-              className="opacity-0 animate-fade-up animation-delay-100 font-display text-5xl md:text-7xl lg:text-8xl font-bold text-cream leading-tight"
-            >
-              Discover
-              <span className="block text-gradient-gold italic mt-2">Haarlem</span>
-            </h1>
-            <p className="opacity-0 animate-fade-up animation-delay-200 font-body text-xl md:text-2xl text-cream/90 max-w-3xl mx-auto leading-relaxed">
-              Walk through 800 years of Dutch history in one unforgettable journey. 
-              From majestic churches to hidden courtyards, every step reveals a story.
-            </p>
-            <div className="opacity-0 animate-fade-up animation-delay-300 flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
-              <Button variant="hero" size="xl" asChild className="group">
-                <Link to="/schedule" aria-label="Book your walking tour">
-                  <Calendar className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" aria-hidden="true" />
-                  Book Your Adventure
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-                </Link>
-              </Button>
-              <Button variant="heroOutline" size="xl" asChild>
-                <Link to="/map" aria-label="View the walking route map">
-                  <Compass className="w-5 h-5 mr-2" aria-hidden="true" />
-                  Explore Route
-                </Link>
-              </Button>
-            </div>
+              <div className="opacity-0 animate-fade-up animation-delay-300 flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 pt-6">
+                <Button variant="hero" size="xl" asChild className="group rounded-full">
+                  <Link to="/schedule" aria-label="Book your walking tour">
+                        <Calendar className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" aria-hidden="true" />
+                        BOOK YOUR ADVENTURE
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                  </Link>
+                </Button>
+                    <Button variant="heroOutline" size="xl" asChild className="rounded-full">
+                  <Link to="/map" aria-label="View the walking route map">
+                        <Compass className="w-5 h-5 mr-2" aria-hidden="true" />
+                        EXPLORE ROUTE
+                  </Link>
+                </Button>
+              </div>
 
-            {/* Quick Stats */}
-            <div className="opacity-0 animate-fade-up animation-delay-400 pt-12 grid grid-cols-3 gap-8 max-w-xl mx-auto">
-              <div className="text-center">
-                <p className="font-display text-4xl font-bold text-gold">9</p>
-                <p className="font-body text-base text-cream/70 uppercase tracking-wider">Historic Sites</p>
+              {/* Quick Stats */}
+              <div className="opacity-0 animate-fade-up animation-delay-400 pt-10 grid grid-cols-3 gap-6 max-w-sm mx-auto lg:mx-0">
+                <div className="text-center lg:text-left">
+                  <p className="font-display text-3xl font-bold text-gold">9</p>
+                  <p className="font-body text-xs text-gold uppercase tracking-wider">HISTORIC SITES</p>
+                </div>
+                <div className="text-center lg:text-left border-x border-cream/20 px-2">
+                  <p className="font-display text-3xl font-bold text-gold">2.5</p>
+                  <p className="font-body text-xs text-gold uppercase tracking-wider">HOURS TOUR</p>
+                </div>
+                <div className="text-center lg:text-left">
+                  <p className="font-display text-3xl font-bold text-gold">800+</p>
+                  <p className="font-body text-xs text-gold uppercase tracking-wider">YEARS HISTORY</p>
+                </div>
               </div>
-              <div className="text-center border-x border-cream/20">
-                <p className="font-display text-4xl font-bold text-gold">2.5</p>
-                <p className="font-body text-base text-cream/70 uppercase tracking-wider">Hours Tour</p>
-              </div>
-              <div className="text-center">
-                <p className="font-display text-4xl font-bold text-gold">800+</p>
-                <p className="font-body text-base text-cream/70 uppercase tracking-wider">Years History</p>
-              </div>
-            </div>
+            </HeroFrame>
           </div>
         </div>
 
@@ -98,28 +120,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Photo Gallery Banner - Immersive Visual Break */}
-      <section className="relative py-4 bg-charcoal overflow-hidden">
-        <div className="flex gap-4 animate-scroll-left">
-          {[
-            { img: groteKerkExterior, label: "Church of St. Bavo" },
-            { img: molenExterior, label: "Molen de Adriaan" },
-            { img: museumGallery, label: "Frans Hals Museum" },
-            { img: hofjeGarden, label: "Hidden Hofjes" },
-            { img: windmillSunset, label: "Spaarne River" },
-            { img: groteMarktLife, label: "Grote Markt" },
-            { img: groteKerkInterior, label: "Gothic Interior" },
-          ].map((item, i) => (
-            <div key={i} className="flex-shrink-0 w-72 h-48 rounded-lg overflow-hidden relative group">
-              <img src={item.img} alt={item.label} className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="font-display text-lg font-semibold text-cream">{item.label}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Photo Gallery Banner removed per request */}
 
       {/* History Section - Rich Visual Storytelling */}
       <section className="relative py-32 bg-card overflow-hidden" aria-labelledby="history-heading">
@@ -321,7 +322,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Locations - Immersive Cards */}
-      <section className="py-32 bg-secondary" aria-labelledby="featured-heading">
+      <section className="py-32 bg-[#E8E2D9]" aria-labelledby="featured-heading">
         <div className="container mx-auto px-6">
           <header className="text-center mb-20">
             <p className="font-body text-base uppercase tracking-[0.3em] text-primary mb-4 flex items-center justify-center gap-3">
@@ -455,7 +456,7 @@ export default function HomePage() {
       </section>
 
       {/* All 9 Venues Preview */}
-      <section className="py-24 bg-background" aria-labelledby="venues-heading">
+      <section className="py-24 bg-[#F8F6F1]" aria-labelledby="venues-heading">
         <div className="container mx-auto px-6">
           <header className="text-center mb-16">
             <p className="font-body text-sm uppercase tracking-[0.3em] text-primary mb-4">
@@ -519,7 +520,7 @@ export default function HomePage() {
       </section>
 
       {/* Tour Quick Info */}
-      <section className="py-20 bg-secondary" aria-labelledby="info-heading">
+      <section className="py-20 bg-[#E8E2D9]" aria-labelledby="info-heading">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             <div className="text-center group">

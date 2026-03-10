@@ -8,7 +8,7 @@ import molenHistoric from "@/assets/molen-de-adriaan-historic.jpg";
 
 export default function MolenDeAdriaanPage() {
   return (
-    <article className="pt-36">
+    <article className="pt-16 bg-[#F8F6F1]">
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <img
@@ -18,7 +18,7 @@ export default function MolenDeAdriaanPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
         
-        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 bg-gradient-to-t from-white/90 to-transparent">
           <div className="container mx-auto">
             <Link
               to="/"
@@ -263,7 +263,7 @@ export default function MolenDeAdriaanPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16 bg-[#E8E2D9]">
         <div className="container mx-auto px-6 text-center">
           <h2 className="font-display text-3xl font-bold mb-6">Find It on the Route</h2>
           <p className="font-body text-muted-foreground mb-8 max-w-2xl mx-auto">

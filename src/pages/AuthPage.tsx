@@ -7,7 +7,8 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Lock, User, ArrowLeft, Eye, EyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
-import heroImage from "@/assets/hero-haarlem.jpg";
+import heroImage from "@/assets/haarlem-aerial.jpg";
+import heroVideo from "@/assets/herovid-haarlem.mov";
 
 type AuthView = "login" | "register" | "reset";
 
@@ -117,10 +118,15 @@ export default function AuthPage() {
     <div className="min-h-screen flex">
       {/* Left side - decorative */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
-        <img
-          src={heroImage}
-          alt="Historic Haarlem"
+        <video
+          src={heroVideo}
+          poster={heroImage}
           className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          role="presentation"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/60 to-burgundy-dark/80" />
         <div className="relative z-10 flex flex-col justify-center p-16 text-primary-foreground">

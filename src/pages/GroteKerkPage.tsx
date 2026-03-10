@@ -8,7 +8,7 @@ import groteKerkHistoric from "@/assets/grote-kerk-historic.jpg";
 
 export default function GroteKerkPage() {
   return (
-    <article className="pt-36">
+    <article className="pt-16">
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <img
@@ -262,7 +262,7 @@ export default function GroteKerkPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 bg-secondary">
+      <section className="py-16 bg-[#E8E2D9]">
         <div className="container mx-auto px-6 text-center">
           <h2 className="font-display text-3xl font-bold mb-6">Find It on the Route</h2>
           <p className="font-body text-muted-foreground mb-8 max-w-2xl mx-auto">

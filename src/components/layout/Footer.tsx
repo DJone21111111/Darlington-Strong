@@ -59,50 +59,7 @@ export function Footer() {
 
   return (
     <footer role="contentinfo" aria-label="Site footer">
-      {/* Newsletter Section - Dark burgundy for contrast */}
-      <section 
-        className="bg-burgundy py-16"
-        aria-labelledby="newsletter-heading"
-      >
-        <div className="container mx-auto px-6 text-center">
-          <h2 
-            id="newsletter-heading"
-            className="font-display text-3xl md:text-4xl font-bold text-cream italic mb-4"
-          >
-            Do you also enjoy going out?
-          </h2>
-          <p className="text-cream/85 font-body text-base md:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-            The monthly newsletter tells you all about the events, exhibitions and other
-            recommendations for the coming period.
-          </p>
-          
-          <form 
-            onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"
-            aria-label="Newsletter signup form"
-          >
-            <label htmlFor="newsletter-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
-              required
-              aria-required="true"
-              className="flex-1 px-6 py-4 rounded-md bg-cream text-charcoal placeholder:text-charcoal-light font-body text-base focus:outline-none focus:ring-2 focus:ring-gold"
-            />
-            <button
-              type="submit"
-              className="px-8 py-4 bg-gold text-charcoal font-body font-semibold uppercase tracking-wider text-sm rounded-md hover:bg-gold-light transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-cream focus:ring-offset-2 focus:ring-offset-burgundy"
-            >
-              Sign Up
-            </button>
-          </form>
-        </div>
-      </section>
+      {/* Newsletter section removed */}
 
       {/* Footer Links Section - Warm charcoal for professionalism */}
       <section 
